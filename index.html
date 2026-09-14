@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="LASETA Group helps companies recover commercial value, enter the Saudi market, and execute growth with disciplined, technology-enabled services." />
-  <meta name="theme-color" content="#0f2f2a" />
+  <meta name="theme-color" content="#0B0F14" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <title>LASETA Group | Commercial Growth & Market Execution</title>
   <style>
-    :root{--green:#0f2f2a;--green-2:#173e37;--cream:#f4efe5;--charcoal:#1d2423;--muted:#6b746f;--gold:#b89563;--white:#ffffff;--line:rgba(15,47,42,.14);--shadow:0 18px 45px rgba(15,47,42,.10);--radius:22px;--max:1180px}
+    :root{--ink:#0B0F14;--green:#0f2f2a;--green-2:#173e37;--cream:#F7F4EF;--charcoal:#1d2423;--muted:#6b746f;--gold:#C8A45D;--white:#ffffff;--line:rgba(15,47,42,.14);--shadow:0 18px 45px rgba(15,47,42,.10);--radius:22px;--max:1180px}
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--charcoal);background:var(--cream);line-height:1.6} a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
     .container{width:min(calc(100% - 36px),var(--max));margin:0 auto}
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(244,239,229,.88);border-bottom:1px solid rgba(15,47,42,.08)}
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(11,15,20,.96);border-bottom:1px solid rgba(200,164,93,.22)}
     .nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.12em;color:var(--green)}
-    .brand-mark{width:34px;height:34px;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center;font-size:12px;letter-spacing:.02em}
-    .nav-links{display:flex;align-items:center;gap:24px;font-size:14px;color:#34433f}.nav-cta{padding:11px 17px;background:var(--green);color:var(--white);border-radius:999px;font-weight:700}
-    .hero{position:relative;overflow:hidden;padding:92px 0 70px;background:radial-gradient(circle at 82% 18%,rgba(184,149,99,.18),transparent 26%),radial-gradient(circle at 13% 84%,rgba(15,47,42,.08),transparent 30%),var(--cream)}
+    .brand{display:flex;align-items:center;line-height:0;flex:0 0 auto}.brand svg{display:block;width:220px;height:auto;max-width:100%}
+    .nav-links{display:flex;align-items:center;gap:24px;font-size:14px;color:var(--cream)}.nav-links>a:not(.nav-cta){opacity:.88}.nav-links>a:not(.nav-cta):hover{opacity:1;color:var(--gold)}.nav-cta{padding:11px 17px;background:var(--gold);color:var(--ink);border-radius:999px;font-weight:800}
+    .hero{position:relative;overflow:hidden;padding:92px 0 70px;background:radial-gradient(circle at 82% 18%,rgba(200,164,93,.18),transparent 26%),radial-gradient(circle at 13% 84%,rgba(15,47,42,.08),transparent 30%),var(--cream)}
     .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:52px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800;margin-bottom:22px}.eyebrow:before{content:"";width:30px;height:1px;background:var(--gold)}
     h1{margin:0;font-size:clamp(46px,7vw,88px);line-height:.98;letter-spacing:-.045em;color:var(--green);max-width:900px}.hero p{font-size:20px;max-width:720px;color:#4c5b57;margin:28px 0 34px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:999px;font-weight:800;transition:.2s ease}.btn-primary{background:var(--green);color:white}.btn-primary:hover{transform:translateY(-2px);background:var(--green-2)}.btn-secondary{border:1px solid rgba(15,47,42,.24);color:var(--green);background:rgba(255,255,255,.35)}.btn-secondary:hover{background:white}
@@ -26,12 +26,28 @@
     .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.venture{border:1px solid var(--line);border-radius:24px;padding:28px;background:#fffaf1}.venture strong{display:block;font-size:22px;color:var(--green);margin-bottom:10px}.venture p{color:#66716d;min-height:78px}.venture a{display:inline-flex;margin-top:10px;font-weight:800;color:var(--green);border-bottom:1px solid var(--gold);padding-bottom:3px}
     .cta{padding:76px 0 94px}.cta-box{background:linear-gradient(135deg,var(--green),#143d35);color:white;border-radius:34px;padding:52px;display:flex;justify-content:space-between;align-items:center;gap:36px}.cta-box h2{margin:0 0 12px;font-size:clamp(34px,5vw,56px);letter-spacing:-.035em;line-height:1.02}.cta-box p{margin:0;color:#cfdbd7;max-width:700px}.cta-box .btn{white-space:nowrap;background:var(--cream);color:var(--green)}
     footer{border-top:1px solid rgba(15,47,42,.1);padding:28px 0 40px;color:#69746f;font-size:14px}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.footer-brand{color:var(--green);font-weight:900;letter-spacing:.1em}
-    @media (max-width:920px){.nav-links{display:none}.hero-grid,.section-head,.feature-grid{grid-template-columns:1fr}.services,.portfolio{grid-template-columns:1fr}.hero-card{min-height:unset}.cta-box{align-items:flex-start;flex-direction:column}}
-    @media (max-width:560px){.hero{padding-top:64px}section{padding:66px 0}.hero p{font-size:18px}.hero-card,.card,.feature,.venture,.cta-box{padding:26px}.brand{font-size:14px}}
+    @media (max-width:920px){.nav-links{display:none}.hero-grid,.section-head,.feature-grid{grid-template-columns:1fr}.services,.portfolio{grid-template-columns:1fr}.hero-card{min-height:unset}.cta-box{align-items:flex-start;flex-direction:column}.brand svg{width:195px}}
+    @media (max-width:560px){.nav-inner{min-height:68px}.brand svg{width:172px}.hero{padding-top:64px}section{padding:66px 0}.hero p{font-size:18px}.hero-card,.card,.feature,.venture,.cta-box{padding:26px}}
   </style>
 </head>
 <body>
-  <header class="nav"><div class="container nav-inner"><a class="brand" href="#top" aria-label="LASETA Group home"><span class="brand-mark">L</span><span>LASETA GROUP</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#ventures">Ventures</a><a class="nav-cta" href="mailto:sales@laseta.net?subject=LASETA%20Business%20Inquiry">Contact Sales</a></nav></div></header>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="LASETA Group home">
+        <svg width="220" height="54" viewBox="0 0 220 54" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LASETA Group logo">
+          <rect width="220" height="54" rx="12" fill="transparent"/>
+          <g transform="translate(4 5)">
+            <path d="M22 1.5L42.5 22L22 42.5L1.5 22L22 1.5Z" stroke="#C8A45D" stroke-width="2.2"/>
+            <path d="M16 12V32H30" stroke="#C8A45D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 7.5L36.5 22L22 36.5L7.5 22L22 7.5Z" stroke="#C8A45D" stroke-opacity="0.35" stroke-width="1"/>
+          </g>
+          <text x="58" y="27" fill="#F7F4EF" font-family="Inter, Sora, Montserrat, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2.4">LASETA</text>
+          <text x="60" y="43" fill="#C8A45D" font-family="Inter, Sora, Montserrat, Arial, sans-serif" font-size="10" font-weight="500" letter-spacing="3.2">GROUP</text>
+        </svg>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation"><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#ventures">Ventures</a><a class="nav-cta" href="mailto:sales@laseta.net?subject=LASETA%20Business%20Inquiry">Contact Sales</a></nav>
+    </div>
+  </header>
   <main id="top">
     <section class="hero"><div class="container hero-grid"><div><span class="eyebrow">People • Ideas • Technology</span><h1>Turn commercial complexity into measurable growth.</h1><p>LASETA Group helps companies identify revenue leakage, accelerate market entry, and execute commercial opportunities in Saudi Arabia with disciplined, technology-enabled support.</p><div class="hero-actions"><a class="btn btn-primary" href="mailto:sales@laseta.net?subject=Request%20a%20Commercial%20Diagnostic">Request a Diagnostic</a><a class="btn btn-secondary" href="#solutions">Explore Solutions</a></div></div><aside class="hero-card"><div><small>Commercial Execution</small><h2>Built for businesses that need action, not another report.</h2></div><div class="metric-list"><div class="metric">Commercial recovery and revenue-leakage review</div><div class="metric">Saudi market-entry and post-show sales execution</div><div class="metric">Business opportunity sourcing and commercial support</div></div></aside></div></section>
     <section id="services"><div class="container"><div class="section-head"><h2>Core services</h2><p>Focused commercial services designed to surface missed value, improve execution, and move qualified opportunities toward measurable outcomes.</p></div><div class="services"><article class="card"><span class="num">01</span><h3>Commercial Recovery</h3><p>Review commercial records, obligations, changes, payment positions, and evidence gaps to identify potential revenue leakage and priority recovery actions.</p></article><article class="card"><span class="num">02</span><h3>Saudi Market Entry</h3><p>Practical local-market support for international companies seeking qualified introductions, sales follow-up, market validation, and post-event execution.</p></article><article class="card"><span class="num">03</span><h3>Commercial Opportunity Desk</h3><p>Structured sourcing, qualification, research, and execution support for high-value business opportunities across Saudi Arabia and the GCC.</p></article></div></div></section>
