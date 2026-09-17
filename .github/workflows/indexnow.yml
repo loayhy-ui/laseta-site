@@ -1,0 +1,39 @@
+name: Submit IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'recover.html'
+      - 'automate.html'
+      - 'adfactory.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'bc6685b036b95e0b05a95901c83fa3aa.txt'
+      - '.github/workflows/indexnow.yml'
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit LASETA URLs to IndexNow
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data '{
+              "host": "laseta.net",
+              "key": "bc6685b036b95e0b05a95901c83fa3aa",
+              "keyLocation": "https://laseta.net/bc6685b036b95e0b05a95901c83fa3aa.txt",
+              "urlList": [
+                "https://laseta.net/",
+                "https://laseta.net/recover.html",
+                "https://laseta.net/automate.html",
+                "https://laseta.net/adfactory.html"
+              ]
+            }'
+          echo 'IndexNow submission accepted.'
