@@ -1,127 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="LASETA is an AI Revenue Intelligence company helping Saudi and GCC businesses detect revenue leakage, recover missed opportunities, automate commercial follow-up, and turn business data into measurable action." />
-  <meta name="theme-color" content="#0B0F14" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <title>LASETA | AI Revenue Intelligence Company</title>
-  <style>
-    :root{--ink:#0B0F14;--green:#0f2f2a;--green-2:#173e37;--cream:#F7F4EF;--charcoal:#1d2423;--muted:#6b746f;--gold:#C8A45D;--white:#ffffff;--line:rgba(15,47,42,.14);--shadow:0 18px 45px rgba(15,47,42,.10);--radius:22px;--max:1180px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--charcoal);background:var(--cream);line-height:1.6}a{color:inherit;text-decoration:none}
-    .container{width:min(calc(100% - 36px),var(--max));margin:0 auto}
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(11,15,20,.96);border-bottom:1px solid rgba(200,164,93,.22)}
-    .nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;line-height:0;flex:0 0 auto}.brand svg{display:block;width:220px;height:auto;max-width:100%}
-    .nav-links{display:flex;align-items:center;gap:24px;font-size:14px;color:var(--cream)}.nav-links>a:not(.nav-cta){opacity:.88}.nav-links>a:not(.nav-cta):hover{opacity:1;color:var(--gold)}.nav-cta{padding:11px 17px;background:var(--gold);color:var(--ink);border-radius:999px;font-weight:800}
-    .hero{position:relative;overflow:hidden;padding:92px 0 74px;background:radial-gradient(circle at 82% 18%,rgba(200,164,93,.20),transparent 27%),radial-gradient(circle at 12% 86%,rgba(15,47,42,.09),transparent 31%),var(--cream)}
-    .hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:52px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800;margin-bottom:22px}.eyebrow:before{content:"";width:30px;height:1px;background:var(--gold)}
-    h1{margin:0;font-size:clamp(46px,7vw,86px);line-height:.98;letter-spacing:-.045em;color:var(--green);max-width:900px}.hero p{font-size:20px;max-width:760px;color:#4c5b57;margin:28px 0 34px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:999px;font-weight:800;transition:.2s ease}.btn-primary{background:var(--green);color:#fff}.btn-primary:hover{transform:translateY(-2px);background:var(--green-2)}.btn-secondary{border:1px solid rgba(15,47,42,.24);color:var(--green);background:rgba(255,255,255,.35)}.btn-secondary:hover{background:#fff}
-    .hero-card{background:var(--green);color:var(--white);border-radius:34px;padding:42px;box-shadow:0 24px 70px rgba(15,47,42,.18);min-height:430px;display:flex;flex-direction:column;justify-content:space-between}.hero-card small{letter-spacing:.16em;text-transform:uppercase;color:#d7c7ac;font-weight:800}.hero-card h2{font-size:34px;line-height:1.13;margin:18px 0;letter-spacing:-.025em}.metric-list{display:grid;gap:16px;margin-top:26px}.metric{border-top:1px solid rgba(255,255,255,.14);padding-top:14px;color:#d9e3df;font-size:15px}
-    section{padding:88px 0}.section-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:40px;align-items:end;margin-bottom:42px}.section-head h2{margin:0;font-size:clamp(34px,5vw,58px);color:var(--green);line-height:1.05;letter-spacing:-.035em}.section-head p{margin:0;color:#61706b;font-size:18px;max-width:760px}
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:rgba(255,255,255,.58);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}.card .num{font-size:12px;letter-spacing:.14em;color:var(--gold);font-weight:900}.card h3{margin:18px 0 12px;font-size:24px;color:var(--green);letter-spacing:-.02em}.card p{margin:0;color:#64716d}
-    .dark{background:var(--green);color:#fff}.dark .section-head h2{color:#fff}.dark .section-head p{color:#cad8d3}.feature-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}.feature{border:1px solid rgba(255,255,255,.14);border-radius:26px;padding:34px;background:rgba(255,255,255,.04)}.feature .tag{display:inline-block;color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}.feature h3{margin:0 0 16px;font-size:30px;letter-spacing:-.025em}.feature p{color:#c8d7d2}.feature ol,.feature ul{padding-left:20px;color:#d7e2de;margin:22px 0 0}.feature li{margin:8px 0}
-    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}.step{border:1px solid var(--line);background:#fffaf1;border-radius:20px;padding:22px}.step b{display:block;color:var(--gold);font-size:12px;letter-spacing:.12em;margin-bottom:8px}.step strong{color:var(--green);display:block;font-size:19px;margin-bottom:7px}.step span{font-size:14px;color:#6a746f}
-    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.venture{border:1px solid var(--line);border-radius:24px;padding:28px;background:#fffaf1}.venture .venture-label{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:900;margin-bottom:12px}.venture strong{display:block;font-size:22px;color:var(--green);margin-bottom:10px}.venture p{color:#66716d;min-height:78px}.venture a{display:inline-flex;margin-top:10px;font-weight:800;color:var(--green);border-bottom:1px solid var(--gold);padding-bottom:3px}
-    .notice{margin-top:24px;padding:20px 22px;border-left:3px solid var(--gold);background:rgba(255,255,255,.42);color:#596661;border-radius:0 16px 16px 0}
-    .cta{padding:76px 0 94px}.cta-box{background:linear-gradient(135deg,var(--green),#143d35);color:#fff;border-radius:34px;padding:52px;display:flex;justify-content:space-between;align-items:center;gap:36px}.cta-box h2{margin:0 0 12px;font-size:clamp(34px,5vw,56px);letter-spacing:-.035em;line-height:1.02}.cta-box p{margin:0;color:#cfdbd7;max-width:720px}.cta-box .btn{white-space:nowrap;background:var(--cream);color:var(--green)}
-    footer{border-top:1px solid rgba(15,47,42,.1);padding:28px 0 40px;color:#69746f;font-size:14px}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.footer-brand{color:var(--green);font-weight:900;letter-spacing:.1em}
-    @media(max-width:920px){.nav-links{display:none}.hero-grid,.section-head,.feature-grid{grid-template-columns:1fr}.services,.portfolio{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.hero-card{min-height:unset}.cta-box{align-items:flex-start;flex-direction:column}.brand svg{width:195px}}
-    @media(max-width:560px){.nav-inner{min-height:68px}.brand svg{width:172px}.hero{padding-top:64px}section{padding:66px 0}.hero p{font-size:18px}.hero-card,.card,.feature,.venture,.cta-box{padding:26px}.flow{grid-template-columns:1fr}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LASETA | AI Revenue Intelligence & Automation</title>
+<meta name="description" content="LASETA helps businesses find, recover and automate revenue through AI-powered sales recovery, workflow automation and performance creative systems.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<link rel="canonical" href="https://laseta.net/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="LASETA | AI Revenue Intelligence & Automation">
+<meta property="og:description" content="We find revenue. We recover revenue. We automate revenue.">
+<meta property="og:url" content="https://laseta.net/">
+<meta property="og:type" content="website">
+<style>
+:root{--ink:#0b0f14;--green:#0f2f2a;--green2:#173e37;--cream:#f7f4ef;--gold:#c8a45d;--text:#1f2926;--muted:#66736e;--line:rgba(15,47,42,.15);--white:#fff;--max:1180px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.6}a{text-decoration:none;color:inherit}.wrap{width:min(calc(100% - 36px),var(--max));margin:auto}.nav{position:sticky;top:0;z-index:30;background:rgba(11,15,20,.97);border-bottom:1px solid rgba(200,164,93,.22)}.navin{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{color:#fff;font-weight:900;letter-spacing:.18em}.logo span{color:var(--gold)}.links{display:flex;gap:22px;align-items:center;color:#e9ece9;font-size:14px}.links a:hover{color:var(--gold)}.cta{background:var(--gold);color:var(--ink)!important;padding:10px 16px;border-radius:999px;font-weight:900}.hero{padding:100px 0 78px;background:radial-gradient(circle at 85% 15%,rgba(200,164,93,.19),transparent 28%),var(--cream)}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}h1{font-size:clamp(48px,7vw,88px);line-height:.97;letter-spacing:-.045em;color:var(--green);margin:18px 0 26px}.hero p{font-size:20px;color:#51605b;max-width:760px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;min-height:52px;align-items:center;padding:0 22px;border-radius:999px;font-weight:900}.primary{background:var(--green);color:#fff}.secondary{border:1px solid var(--line);background:#fff9;color:var(--green)}.panel{background:var(--green);color:#fff;padding:38px;border-radius:30px;box-shadow:0 25px 65px rgba(15,47,42,.17)}.panel small{color:var(--gold);font-weight:900;letter-spacing:.14em;text-transform:uppercase}.panel h2{font-size:34px;line-height:1.1;margin:14px 0 20px}.metric{padding:15px 0;border-top:1px solid rgba(255,255,255,.14);color:#d9e4df}section{padding:84px 0}.head{display:grid;grid-template-columns:.75fr 1.25fr;gap:36px;align-items:end;margin-bottom:38px}.head h2{font-size:clamp(34px,5vw,58px);line-height:1.03;color:var(--green);margin:0;letter-spacing:-.035em}.head p{margin:0;color:var(--muted);font-size:18px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff9;border:1px solid var(--line);border-radius:24px;padding:28px}.num{font-size:12px;color:var(--gold);font-weight:900;letter-spacing:.14em}.card h3{font-size:26px;color:var(--green);margin:14px 0 10px}.card p{color:var(--muted)}.card a{display:inline-block;margin-top:14px;color:var(--green);font-weight:900;border-bottom:1px solid var(--gold)}.dark{background:var(--green);color:#fff}.dark .head h2{color:#fff}.dark .head p{color:#cad8d3}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.step{padding:22px;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(255,255,255,.04)}.step b{display:block;color:var(--gold);font-size:12px;margin-bottom:8px}.step strong{font-size:20px}.ventures{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.venture{background:#fffaf1;border:1px solid var(--line);border-radius:22px;padding:26px}.venture small{color:var(--gold);font-weight:900;letter-spacing:.13em;text-transform:uppercase}.venture h3{color:var(--green);font-size:23px;margin:10px 0}.venture p{color:var(--muted)}.venture a{font-weight:900;color:var(--green)}.close{padding:72px 0 94px}.closebox{background:linear-gradient(135deg,var(--green),#17463d);color:#fff;border-radius:30px;padding:48px;display:flex;justify-content:space-between;align-items:center;gap:28px}.closebox h2{font-size:clamp(34px,5vw,54px);margin:0 0 10px;line-height:1}.closebox p{color:#cfdbd7;margin:0}.closebox .btn{background:var(--cream);color:var(--green)}footer{border-top:1px solid var(--line);padding:30px 0 40px;color:#6b7671;font-size:14px}.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}@media(max-width:900px){.links{display:none}.grid,.head{grid-template-columns:1fr}.cards,.ventures{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}}@media(max-width:560px){.hero{padding-top:65px}.flow{grid-template-columns:1fr}.closebox{flex-direction:column;align-items:flex-start}.panel,.card,.venture,.closebox{padding:24px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"LASETA","url":"https://laseta.net/","email":"sales@laseta.net","description":"AI Revenue Intelligence and Automation company serving businesses globally.","areaServed":"Worldwide"}</script>
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="LASETA Group home">
-        <svg width="220" height="54" viewBox="0 0 220 54" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LASETA Group logo">
-          <rect width="220" height="54" rx="12" fill="transparent"/>
-          <g transform="translate(4 5)">
-            <path d="M22 1.5L42.5 22L22 42.5L1.5 22L22 1.5Z" stroke="#C8A45D" stroke-width="2.2"/>
-            <path d="M16 12V32H30" stroke="#C8A45D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M22 7.5L36.5 22L22 36.5L7.5 22L22 7.5Z" stroke="#C8A45D" stroke-opacity="0.35" stroke-width="1"/>
-          </g>
-          <text x="58" y="27" fill="#F7F4EF" font-family="Inter, Sora, Montserrat, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2.4">LASETA</text>
-          <text x="60" y="43" fill="#C8A45D" font-family="Inter, Sora, Montserrat, Arial, sans-serif" font-size="10" font-weight="500" letter-spacing="3.2">GROUP</text>
-        </svg>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation"><a href="#intelligence">Revenue Intelligence</a><a href="#flagship">Flagship</a><a href="#ventures">Ventures</a><a class="nav-cta" href="mailto:sales@laseta.net?subject=AI%20Revenue%20Diagnostic">Request Diagnostic</a></nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">AI Revenue Intelligence Company</span>
-          <h1>Find the revenue your business is already losing.</h1>
-          <p>LASETA helps Saudi and GCC businesses detect revenue leakage, recover missed commercial opportunities, automate follow-up, and turn fragmented business data into measurable revenue action.</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="mailto:sales@laseta.net?subject=Request%20an%20AI%20Revenue%20Diagnostic">Request a Revenue Diagnostic</a><a class="btn btn-secondary" href="#intelligence">How LASETA Works</a></div>
-        </div>
-        <aside class="hero-card">
-          <div><small>Primary Business</small><h2>Revenue intelligence that moves from evidence to action.</h2></div>
-          <div class="metric-list"><div class="metric">Detect commercial and customer-journey leakage</div><div class="metric">Recover stalled leads and missed opportunities</div><div class="metric">Automate revenue follow-up and decision workflows</div><div class="metric">Build management visibility from fragmented data</div></div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="intelligence">
-      <div class="container">
-        <div class="section-head"><h2>Revenue Intelligence</h2><p>LASETA is built around one question: where is measurable commercial value being lost, delayed, ignored, or left invisible inside the business?</p></div>
-        <div class="services">
-          <article class="card"><span class="num">01</span><h3>Revenue Leak Intelligence</h3><p>Map revenue leakage across leads, quotations, follow-up, customer journeys, commercial records, payment positions, and execution gaps.</p></article>
-          <article class="card"><span class="num">02</span><h3>AI Revenue Systems</h3><p>Design practical AI-assisted workflows for lead qualification, follow-up, alerts, reporting, customer response, and commercial decision support.</p></article>
-          <article class="card"><span class="num">03</span><h3>Opportunity Intelligence</h3><p>Research and qualify accounts, opportunities, market-entry targets, decision makers, and commercial signals across Saudi Arabia and the GCC.</p></article>
-        </div>
-        <div class="flow">
-          <div class="step"><b>01</b><strong>Detect</strong><span>Find leakage and hidden opportunity.</span></div>
-          <div class="step"><b>02</b><strong>Prioritize</strong><span>Rank issues by commercial impact.</span></div>
-          <div class="step"><b>03</b><strong>Recover</strong><span>Move stalled value toward action.</span></div>
-          <div class="step"><b>04</b><strong>Automate</strong><span>Remove repeatable manual friction.</span></div>
-          <div class="step"><b>05</b><strong>Monitor</strong><span>Keep management visibility alive.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="dark" id="flagship">
-      <div class="container">
-        <div class="section-head"><h2>Flagship: Revenue Leak Hunter</h2><p>Our entry product is a focused diagnostic that traces where prospects, quotations, follow-up, commercial evidence, payments, or customer journeys may be leaking value.</p></div>
-        <div class="feature-grid">
-          <article class="feature"><span class="tag">Diagnostic</span><h3>Revenue Leak Map</h3><p>We examine the commercial path from opportunity to cash and produce a prioritized map of friction, leakage, missed follow-up, and visibility gaps.</p><ul><li>Lead and quotation follow-up gaps</li><li>Customer journey and response friction</li><li>Commercial recovery and payment visibility</li><li>Data and workflow fragmentation</li><li>Priority actions based on evidence</li></ul></article>
-          <article class="feature"><span class="tag">Execution</span><h3>From finding to system</h3><p>LASETA can convert validated findings into lightweight operating systems instead of leaving the client with a static report.</p><ol><li>Diagnostic and evidence map</li><li>Recovery action register</li><li>AI-assisted workflow design</li><li>Automation and management alerts</li><li>Ongoing revenue intelligence monitoring</li></ol></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="capabilities">
-      <div class="container">
-        <div class="section-head"><h2>Supporting capabilities</h2><p>These capabilities support the core Revenue Intelligence business when the commercial problem requires deeper recovery, local execution, or market development.</p></div>
-        <div class="services">
-          <article class="card"><span class="num">A</span><h3>Commercial Recovery Guard</h3><p>Structured review of commercial records, obligations, payment positions, evidence gaps, and potentially unbilled or delayed value.</p></article>
-          <article class="card"><span class="num">B</span><h3>Saudi Market Entry Desk</h3><p>Local execution support for international companies that need qualified target research, sales follow-through, and Saudi-market commercial coordination.</p></article>
-          <article class="card"><span class="num">C</span><h3>Digital Customer Intelligence</h3><p>Analyze the digital customer journey, response quality, public trust signals, and conversion friction to identify operational improvements.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="ventures">
-      <div class="container">
-        <div class="section-head"><h2>LASETA specialist ventures</h2><p>LASETA's principal business is AI Revenue Intelligence. The following smaller specialist ventures remain operationally distinct, with separate offers, identities, and customer journeys under the wider LASETA portfolio.</p></div>
-        <div class="portfolio">
-          <article class="venture"><span class="venture-label">Specialist Venture</span><strong>Diamond Hand Nursery</strong><p>Nursery, landscape supply, plant sourcing, and related B2B opportunities in Riyadh.</p><a href="https://diamond-hand-nursery.floot.app/" target="_blank" rel="noopener">Visit nursery site →</a></article>
-          <article class="venture"><span class="venture-label">Specialist Venture</span><strong>Diamond Hand Agency</strong><p>Advertising, events, conferences, promotional execution, and related commercial services.</p><a href="https://diamond-hand-agency.floot.app/" target="_blank" rel="noopener">Visit agency site →</a></article>
-          <article class="venture"><span class="venture-label">Specialist Venture</span><strong>Wadi Laban Land</strong><p>Independent land and seasonal-use opportunities in Wadi Laban, Riyadh.</p><a href="https://wadi-laban-land.floot.app/" target="_blank" rel="noopener">Visit land site →</a></article>
-        </div>
-        <div class="notice"><strong>Portfolio principle:</strong> each specialist venture remains separated in content, customer journey, operating workflow, and digital presence. LASETA provides the strategic parent structure without blending their individual offers.</div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container"><div class="cta-box"><div><h2>Start with one revenue leak.</h2><p>Show us where leads disappear, follow-up breaks, payments become unclear, customer journeys stall, or management lacks visibility. LASETA starts with evidence and builds from there.</p></div><a class="btn" href="mailto:sales@laseta.net?subject=Request%20a%20Revenue%20Leak%20Diagnostic">sales@laseta.net</a></div></div>
-    </section>
-  </main>
-
-  <footer><div class="container footer-inner"><div class="footer-brand">LASETA GROUP</div><div>AI Revenue Intelligence • Saudi Arabia & GCC</div><div>© 2026 LASETA Group. All rights reserved.</div></div></footer>
+<header class="nav"><div class="wrap navin"><a class="logo" href="/">LASETA <span>GROUP</span></a><nav class="links"><a href="#solutions">Solutions</a><a href="#how">How it works</a><a href="#ventures">Ventures</a><a class="cta" href="mailto:sales@laseta.net?subject=Request%20a%20Revenue%20Scan">Request a Revenue Scan</a></nav></div></header>
+<main>
+<section class="hero"><div class="wrap grid"><div><div class="eyebrow">AI Revenue Intelligence & Automation</div><h1>Find revenue. Recover revenue. Automate revenue.</h1><p>LASETA builds AI-powered systems that recover lost sales, automate commercial workflows and produce performance creative designed to move qualified opportunities toward revenue.</p><div class="actions"><a class="btn primary" href="mailto:sales@laseta.net?subject=Request%20a%20Revenue%20Scan">Request a Revenue Scan</a><a class="btn secondary" href="#solutions">Explore the Revenue Engine</a></div></div><aside class="panel"><div><small>LASETA Revenue Engine</small><h2>One commercial system. Three connected growth engines.</h2></div><div><div class="metric">Recover dormant leads and missed sales opportunities</div><div class="metric">Automate lead qualification, follow-up and reporting</div><div class="metric">Create and test AI performance creative at speed</div></div></aside></div></section>
+<section id="solutions"><div class="wrap"><div class="head"><h2>Three revenue engines</h2><p>Each solution can be deployed independently, then connected into one measurable revenue operating system.</p></div><div class="cards"><article class="card"><span class="num">01</span><h3>LASETA Recover AI</h3><p>Identify dormant leads, unclosed quotes and missed follow-up, then build a structured recovery workflow around the opportunities already inside the business.</p><a href="recover.html">Explore Recover AI →</a></article><article class="card"><span class="num">02</span><h3>LASETA Automate</h3><p>Productized AI workflows for lead capture, qualification, appointments, proposals, reminders and commercial reporting.</p><a href="automate.html">Explore Automate →</a></article><article class="card"><span class="num">03</span><h3>LASETA AdFactory AI</h3><p>High-velocity creative testing: multiple hooks, scripts, angles and short-form ads built around one product or offer.</p><a href="adfactory.html">Explore AdFactory AI →</a></article></div></div></section>
+<section class="dark" id="how"><div class="wrap"><div class="head"><h2>The LASETA AI Revenue Loop</h2><p>Creative acquires attention, automation converts and follows up, recovery reactivates the opportunities that would otherwise disappear.</p></div><div class="flow"><div class="step"><b>01</b><strong>Attract</strong><div>Performance creative</div></div><div class="step"><b>02</b><strong>Capture</strong><div>Lead intake</div></div><div class="step"><b>03</b><strong>Automate</strong><div>Qualification & follow-up</div></div><div class="step"><b>04</b><strong>Recover</strong><div>Lost opportunity reactivation</div></div><div class="step"><b>05</b><strong>Measure</strong><div>Commercial outcomes</div></div></div></div></section>
+<section id="ventures"><div class="wrap"><div class="head"><h2>Specialist ventures</h2><p>LASETA also owns and develops smaller specialist ventures. Each remains operationally and commercially separate from the core AI Revenue Intelligence business.</p></div><div class="ventures"><article class="venture"><small>Specialist Venture</small><h3>Diamond Hand Nursery</h3><p>Nursery, landscape supply, plant sourcing and related B2B opportunities in Riyadh.</p><a href="https://diamond-hand-nursery.floot.app/" target="_blank" rel="noopener">Visit venture →</a></article><article class="venture"><small>Specialist Venture</small><h3>Diamond Hand Agency</h3><p>Advertising, events, conferences, promotional execution and commercial support.</p><a href="https://diamond-hand-agency.floot.app/" target="_blank" rel="noopener">Visit venture →</a></article><article class="venture"><small>Specialist Venture</small><h3>Wadi Laban Land</h3><p>Independent land and seasonal-use opportunities in Wadi Laban, Riyadh.</p><a href="https://wadi-laban-land.floot.app/" target="_blank" rel="noopener">Visit venture →</a></article></div></div></section>
+<section class="close"><div class="wrap"><div class="closebox"><div><h2>Start with the revenue already within reach.</h2><p>Request a focused diagnostic conversation with LASETA.</p></div><a class="btn" href="mailto:sales@laseta.net?subject=Request%20a%20Revenue%20Scan">sales@laseta.net</a></div></div></section>
+</main>
+<footer><div class="wrap foot"><strong>LASETA GROUP</strong><span>AI Revenue Intelligence & Automation</span><span>© 2026 LASETA. All rights reserved.</span></div></footer>
 </body>
 </html>
