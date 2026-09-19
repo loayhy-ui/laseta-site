@@ -8,11 +8,20 @@ on:
       - 'recover.html'
       - 'automate.html'
       - 'adfactory.html'
+      - 'consumer-services.html'
+      - 'job-application-support-saudi-arabia.html'
+      - 'whatsapp-sales-kit-saudi-arabia.html'
+      - 'university-admissions-scholarship-saudi-arabia.html'
+      - 'home-service-quote-comparison-riyadh.html'
+      - 'move-in-setup-concierge-riyadh.html'
       - 'sitemap.xml'
       - 'robots.txt'
       - 'bc6685b036b95e0b05a95901c83fa3aa.txt'
       - '.github/workflows/indexnow.yml'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   submit:
@@ -33,7 +42,13 @@ jobs:
                 "https://laseta.net/",
                 "https://laseta.net/recover.html",
                 "https://laseta.net/automate.html",
-                "https://laseta.net/adfactory.html"
+                "https://laseta.net/adfactory.html",
+                "https://laseta.net/consumer-services.html",
+                "https://laseta.net/job-application-support-saudi-arabia.html",
+                "https://laseta.net/whatsapp-sales-kit-saudi-arabia.html",
+                "https://laseta.net/university-admissions-scholarship-saudi-arabia.html",
+                "https://laseta.net/home-service-quote-comparison-riyadh.html",
+                "https://laseta.net/move-in-setup-concierge-riyadh.html"
               ]
             }'
-          echo 'IndexNow submission accepted.'
+          echo 'IndexNow submission accepted for core and consumer revenue pages.'
