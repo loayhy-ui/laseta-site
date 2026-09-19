@@ -9,6 +9,9 @@ on:
       - 'automate.html'
       - 'adfactory.html'
       - 'consumer-services.html'
+      - 'guides.html'
+      - 'guides/**'
+      - 'ar/**'
       - 'job-application-support-saudi-arabia.html'
       - 'whatsapp-sales-kit-saudi-arabia.html'
       - 'university-admissions-scholarship-saudi-arabia.html'
@@ -44,11 +47,19 @@ jobs:
                 "https://laseta.net/automate.html",
                 "https://laseta.net/adfactory.html",
                 "https://laseta.net/consumer-services.html",
+                "https://laseta.net/guides.html",
                 "https://laseta.net/job-application-support-saudi-arabia.html",
+                "https://laseta.net/ar/job-application-support-saudi-arabia.html",
+                "https://laseta.net/guides/ats-cv-saudi-arabia.html",
+                "https://laseta.net/guides/tailor-cv-to-job-saudi-arabia.html",
+                "https://laseta.net/guides/university-admission-checklist-saudi-arabia.html",
+                "https://laseta.net/guides/whatsapp-business-selling-saudi-arabia.html",
+                "https://laseta.net/guides/compare-home-service-quotes-riyadh.html",
+                "https://laseta.net/guides/move-in-checklist-riyadh.html",
                 "https://laseta.net/whatsapp-sales-kit-saudi-arabia.html",
                 "https://laseta.net/university-admissions-scholarship-saudi-arabia.html",
                 "https://laseta.net/home-service-quote-comparison-riyadh.html",
                 "https://laseta.net/move-in-setup-concierge-riyadh.html"
               ]
             }'
-          echo 'IndexNow submission accepted for core and consumer revenue pages.'
+          echo 'IndexNow submission accepted for core, consumer, guide and Arabic revenue pages.'
