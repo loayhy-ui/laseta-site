@@ -12,6 +12,7 @@ on:
       - 'consumer-services.html'
       - 'guides.html'
       - 'guides/**'
+      - 'business/**'
       - 'ar/**'
       - 'es/**'
       - 'fr/**'
@@ -63,6 +64,11 @@ jobs:
                 "https://laseta.net/ar/automate.html",
                 "https://laseta.net/adfactory.html",
                 "https://laseta.net/ar/adfactory.html",
+                "https://laseta.net/business/contractors-revenue-recovery.html",
+                "https://laseta.net/business/real-estate-lead-automation.html",
+                "https://laseta.net/business/clinics-lead-followup.html",
+                "https://laseta.net/business/ecommerce-revenue-recovery.html",
+                "https://laseta.net/business/professional-services-sales-automation.html",
                 "https://laseta.net/consumer-services.html",
                 "https://laseta.net/ar/consumer-services.html",
                 "https://laseta.net/guides.html",
@@ -84,4 +90,4 @@ jobs:
                 "https://laseta.net/guides/move-in-checklist-riyadh.html"
               ]
             }'
-          echo 'IndexNow submission accepted for multilingual LASETA pages.'
+          echo 'IndexNow submission accepted for multilingual B2B and B2C LASETA pages.'
