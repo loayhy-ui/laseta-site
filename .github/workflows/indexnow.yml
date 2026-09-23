@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'request.html'
       - 'recover.html'
       - 'automate.html'
       - 'adfactory.html'
@@ -43,10 +44,17 @@ jobs:
               "keyLocation": "https://laseta.net/bc6685b036b95e0b05a95901c83fa3aa.txt",
               "urlList": [
                 "https://laseta.net/",
+                "https://laseta.net/ar/",
+                "https://laseta.net/request.html",
+                "https://laseta.net/ar/request.html",
                 "https://laseta.net/recover.html",
+                "https://laseta.net/ar/recover.html",
                 "https://laseta.net/automate.html",
+                "https://laseta.net/ar/automate.html",
                 "https://laseta.net/adfactory.html",
+                "https://laseta.net/ar/adfactory.html",
                 "https://laseta.net/consumer-services.html",
+                "https://laseta.net/ar/consumer-services.html",
                 "https://laseta.net/guides.html",
                 "https://laseta.net/job-application-support-saudi-arabia.html",
                 "https://laseta.net/ar/job-application-support-saudi-arabia.html",
@@ -62,4 +70,4 @@ jobs:
                 "https://laseta.net/move-in-setup-concierge-riyadh.html"
               ]
             }'
-          echo 'IndexNow submission accepted for core, consumer, guide and Arabic revenue pages.'
+          echo 'IndexNow submission accepted for English and Arabic LASETA pages.'
