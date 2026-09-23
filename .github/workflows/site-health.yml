@@ -1,0 +1,142 @@
+name: LASETA Site Health
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'guides/**'
+      - 'ar/**'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - '.github/workflows/site-health.yml'
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check sitemap and internal links
+        id: health
+        shell: bash
+        run: |
+          set +e
+          python3 <<'PY' > site-health-report.txt
+          from html.parser import HTMLParser
+          from urllib.parse import urljoin, urlparse, urldefrag
+          from urllib.request import Request, urlopen
+          import xml.etree.ElementTree as ET
+          import sys
+
+          BASE = 'https://laseta.net/'
+          SITEMAP = urljoin(BASE, 'sitemap.xml')
+          UA = 'LASETA-Site-Health/1.0'
+
+          def fetch(url):
+              req = Request(url, headers={'User-Agent': UA})
+              with urlopen(req, timeout=25) as r:
+                  return r.status, r.geturl(), r.read()
+
+          class Links(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.hrefs = []
+              def handle_starttag(self, tag, attrs):
+                  if tag.lower() == 'a':
+                      href = dict(attrs).get('href')
+                      if href:
+                          self.hrefs.append(href)
+
+          broken = []
+          page_bodies = {}
+
+          try:
+              status, final, xml = fetch(SITEMAP)
+              if status >= 400:
+                  broken.append((SITEMAP, status, 'sitemap'))
+                  urls = []
+              else:
+                  root = ET.fromstring(xml)
+                  ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+                  urls = [e.text.strip() for e in root.findall('sm:url/sm:loc', ns) if e.text]
+          except Exception as e:
+              print(f'ERROR sitemap: {e}')
+              sys.exit(2)
+
+          print(f'Sitemap URLs: {len(urls)}')
+
+          for url in urls:
+              try:
+                  status, final, body = fetch(url)
+                  print(f'{status} {url} -> {final}')
+                  if status >= 400:
+                      broken.append((url, status, 'sitemap-url'))
+                  else:
+                      page_bodies[url] = body
+              except Exception as e:
+                  print(f'ERROR {url}: {e}')
+                  broken.append((url, 'ERROR', str(e)))
+
+          internal = set()
+          for page, body in page_bodies.items():
+              try:
+                  parser = Links()
+                  parser.feed(body.decode('utf-8', errors='ignore'))
+                  for href in parser.hrefs:
+                      if href.startswith(('mailto:', 'tel:', 'javascript:')):
+                          continue
+                      absolute = urldefrag(urljoin(page, href))[0]
+                      parsed = urlparse(absolute)
+                      if parsed.scheme in ('http', 'https') and parsed.netloc == 'laseta.net':
+                          internal.add(absolute)
+              except Exception as e:
+                  print(f'PARSE ERROR {page}: {e}')
+
+          print(f'Internal URLs discovered: {len(internal)}')
+          for url in sorted(internal):
+              try:
+                  status, final, _ = fetch(url)
+                  print(f'INTERNAL {status} {url} -> {final}')
+                  if status >= 400:
+                      broken.append((url, status, 'internal-link'))
+              except Exception as e:
+                  print(f'INTERNAL ERROR {url}: {e}')
+                  broken.append((url, 'ERROR', str(e)))
+
+          if broken:
+              print('\nBROKEN URLS:')
+              for item in broken:
+                  print(' | '.join(map(str, item)))
+              sys.exit(1)
+
+          print('\nOK: sitemap and discovered internal links are healthy.')
+          PY
+          rc=$?
+          cat site-health-report.txt
+          echo "exit_code=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Open issue when broken URLs are found
+        if: steps.health.outputs.exit_code != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          title='Automated site health alert: broken URL(s)'
+          if ! gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json title --jq '.[].title' | grep -Fxq "$title"; then
+            {
+              echo 'The automated LASETA site-health check found a broken sitemap or internal URL.'
+              echo
+              echo '```'
+              cat site-health-report.txt
+              echo '```'
+            } > issue-body.md
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file issue-body.md
+          fi
+          exit 1
