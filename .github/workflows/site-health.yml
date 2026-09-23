@@ -37,7 +37,7 @@ jobs:
           BASE = 'https://laseta.net/'
           SITEMAP = urljoin(BASE, 'sitemap.xml')
           UA = 'LASETA-Site-Health/2.0'
-          BLOCKED_PLATFORM_MARKERS = ('tally.so', 'floot.app', 'wixsite.com', 'github.io')
+          BLOCKED_PLATFORM_MARKERS = ('floot.app', 'wixsite.com', 'github.io')
 
           def fetch(url):
               req = Request(url, headers={'User-Agent': UA})
