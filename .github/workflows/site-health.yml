@@ -22,7 +22,7 @@ jobs:
   health-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check sitemap and internal links
+      - name: Check sitemap, internal links and platform-promotion guard
         id: health
         shell: bash
         run: |
@@ -36,7 +36,8 @@ jobs:
 
           BASE = 'https://laseta.net/'
           SITEMAP = urljoin(BASE, 'sitemap.xml')
-          UA = 'LASETA-Site-Health/1.0'
+          UA = 'LASETA-Site-Health/2.0'
+          BLOCKED_PLATFORM_MARKERS = ('tally.so', 'floot.app', 'wixsite.com', 'github.io')
 
           def fetch(url):
               req = Request(url, headers={'User-Agent': UA})
@@ -54,6 +55,7 @@ jobs:
                           self.hrefs.append(href)
 
           broken = []
+          policy = []
           page_bodies = {}
 
           try:
@@ -79,6 +81,10 @@ jobs:
                       broken.append((url, status, 'sitemap-url'))
                   else:
                       page_bodies[url] = body
+                      text = body.decode('utf-8', errors='ignore').lower()
+                      for marker in BLOCKED_PLATFORM_MARKERS:
+                          if marker in text:
+                              policy.append((url, marker, 'blocked-platform-marker'))
               except Exception as e:
                   print(f'ERROR {url}: {e}')
                   broken.append((url, 'ERROR', str(e)))
@@ -109,29 +115,36 @@ jobs:
                   print(f'INTERNAL ERROR {url}: {e}')
                   broken.append((url, 'ERROR', str(e)))
 
+          if policy:
+              print('\nBLOCKED PLATFORM MARKERS:')
+              for item in policy:
+                  print(' | '.join(map(str, item)))
+
           if broken:
               print('\nBROKEN URLS:')
               for item in broken:
                   print(' | '.join(map(str, item)))
+
+          if broken or policy:
               sys.exit(1)
 
-          print('\nOK: sitemap and discovered internal links are healthy.')
+          print('\nOK: sitemap, internal links and platform-promotion guard are healthy.')
           PY
           rc=$?
           cat site-health-report.txt
           echo "exit_code=$rc" >> "$GITHUB_OUTPUT"
           exit 0
 
-      - name: Open issue when broken URLs are found
+      - name: Open issue when a site-health or platform-policy problem is found
         if: steps.health.outputs.exit_code != '0'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          title='Automated site health alert: broken URL(s)'
+          title='Automated site health alert: action required'
           if ! gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json title --jq '.[].title' | grep -Fxq "$title"; then
             {
-              echo 'The automated LASETA site-health check found a broken sitemap or internal URL.'
+              echo 'The automated LASETA site-health check found a broken URL or blocked external-platform marker.'
               echo
               echo '```'
               cat site-health-report.txt
