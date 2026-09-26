@@ -36,7 +36,10 @@ jobs:
 
           BASE = 'https://laseta.net/'
           SITEMAP = urljoin(BASE, 'sitemap.xml')
-          UA = 'LASETA-Site-Health/2.0'
+          UA = 'LASETA-Site-Health/2.1'
+          # Block externally branded hosting/promotion dependencies. Operational
+          # form/payment/analytics providers are not promotion markers and must
+          # be assessed separately in the acquisition dependency register.
           BLOCKED_PLATFORM_MARKERS = ('floot.app', 'wixsite.com', 'github.io')
 
           def fetch(url):
