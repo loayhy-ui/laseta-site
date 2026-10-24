@@ -18,6 +18,12 @@ Arabic: https://laseta.net/ar/
 - E-commerce: https://laseta.net/business/ecommerce-revenue-recovery.html
 - Professional services: https://laseta.net/business/professional-services-sales-automation.html
 
+## Specialist venture enquiry pages
+- Diamond Hand Agency: https://laseta.net/agency/
+- Diamond Hand Agency (Arabic): https://laseta.net/ar/agency/
+- Diamond Hand Nursery: https://laseta.net/nursery/
+- Diamond Hand Nursery (Arabic): https://laseta.net/ar/nursery/
+
 ## Consumer services
 Consumer services are currently in a controlled free launch phase until the first 100 completed-service customers. Pricing then progresses to USD 5 after 100 completed customers and USD 20 after 1,000 completed customers.
 
