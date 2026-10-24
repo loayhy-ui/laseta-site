@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '**.html'
+      - 'revenue-recovery-estimator.html'
       - 'guides/**'
       - 'ar/**'
       - 'sitemap.xml'
