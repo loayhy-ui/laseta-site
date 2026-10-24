@@ -13,6 +13,8 @@ on:
       - 'guides.html'
       - 'guides/**'
       - 'business/**'
+      - 'agency/**'
+      - 'nursery/**'
       - 'ar/**'
       - 'es/**'
       - 'fr/**'
@@ -69,6 +71,10 @@ jobs:
                 "https://laseta.net/business/clinics-lead-followup.html",
                 "https://laseta.net/business/ecommerce-revenue-recovery.html",
                 "https://laseta.net/business/professional-services-sales-automation.html",
+                "https://laseta.net/agency/",
+                "https://laseta.net/ar/agency/",
+                "https://laseta.net/nursery/",
+                "https://laseta.net/ar/nursery/",
                 "https://laseta.net/consumer-services.html",
                 "https://laseta.net/ar/consumer-services.html",
                 "https://laseta.net/guides.html",
