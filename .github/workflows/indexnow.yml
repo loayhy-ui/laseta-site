@@ -7,6 +7,10 @@ on:
       - 'index.html'
       - 'request.html'
       - 'recover.html'
+      - 'revenue-recovery-estimator.html'
+      - 'revenue-recovery-calculator-core.js'
+      - 'revenue-recovery-estimator-ui.js'
+      - 'estimator.css'
       - 'automate.html'
       - 'adfactory.html'
       - 'consumer-services.html'
@@ -62,6 +66,8 @@ jobs:
                 "https://laseta.net/ar/request.html",
                 "https://laseta.net/recover.html",
                 "https://laseta.net/ar/recover.html",
+                "https://laseta.net/revenue-recovery-estimator.html",
+                "https://laseta.net/ar/revenue-recovery-estimator.html",
                 "https://laseta.net/automate.html",
                 "https://laseta.net/ar/automate.html",
                 "https://laseta.net/adfactory.html",
