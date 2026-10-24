@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>حاسبة استعادة الإيرادات | LASETA</title>
+<meta name="description" content="احسب بصورة تقديرية فرص تحصيل الذمم ومساهمة الفرص البيعية الخاملة باستخدام افتراضات إجمالية دون رفع بيانات العملاء.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://laseta.net/ar/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="en-SA" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="ar-SA" href="https://laseta.net/ar/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="x-default" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../service.css">
+<link rel="stylesheet" href="../estimator.css">
+<meta property="og:title" content="حاسبة استعادة الإيرادات | LASETA">
+<meta property="og:description" content="حاسبة تقديرية تحافظ على الخصوصية لتقييم فرص تحصيل الذمم ومساهمة الفرص البيعية الخاملة.">
+<meta property="og:url" content="https://laseta.net/ar/revenue-recovery-estimator.html">
+<meta property="og:type" content="website">
+</head>
+<body>
+<header class="nav"><div class="wrap navin"><a class="logo" href="/ar/">LASETA <span>GROUP</span></a><nav class="navlinks"><a href="recover.html">Recover AI</a><a class="lang" href="../revenue-recovery-estimator.html">English</a><a class="cta" href="request.html?service=recover-ai&amp;utm_source=recovery_estimator&amp;utm_medium=owned_site&amp;utm_campaign=recover_ai">اطلب مراجعة</a></nav></div></header>
+<main class="wrap estimator-page">
+<section class="hero estimator-hero">
+<div class="eyebrow">LASETA Recover AI · حاسبة مجانية</div>
+<h1>حاسبة استعادة الإيرادات</h1>
+<p class="lead">قدّر فرص التحصيل المحتملة من الذمم القائمة بصورة مستقلة عن مساهمة العروض البيعية الخاملة. استخدم افتراضات إجمالية فقط؛ لا تتصل الحاسبة بأنظمتك ولا ترفع مدخلاتك.</p>
+<div class="notice">التقدير ليس إيصالًا ماليًا ولا عقدًا موقعًا ولا دليلًا على تحصيل نقدي ولا ضمانًا للتوقعات أو دليلًا على قيمة الشركة. لا يُعد المبلغ محصلًا إلا بعد إثبات استلامه بنكيًا.</div>
+</section>
+<section class="estimator-layout" aria-label="الحاسبة والنتائج">
+<article class="card">
+<h2>أدخل افتراضات إجمالية</h2>
+<form id="estimatorForm" class="form estimator-form">
+<label>رصيد الذمم المدينة (ريال)<input id="receivables" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" required></label>
+<label>نسبة التحصيل المحتملة (%)<input id="recoveryRate" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>قيمة الفرص البيعية الخاملة (ريال)<input id="pipeline" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" required></label>
+<label>معدل إعادة التفعيل (%)<input id="reactivationRate" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>معدل الإغلاق (%)<input id="closeRate" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>هامش المساهمة (%)<input id="grossMargin" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>تكلفة المتابعة (ريال)<input id="followUpCost" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" required></label>
+<div class="form-actions"><button class="btn primary" type="submit">احسب السيناريوهات</button><button class="btn secondary" type="reset">مسح المدخلات</button></div>
+</form>
+<p id="status" role="status" aria-live="polite"></p>
+</article>
+<section id="results" class="results" aria-labelledby="resultsTitle" hidden>
+<h2 id="resultsTitle">سيناريوهات تقديرية</h2>
+<div class="table-scroll"><table><thead><tr><th>المؤشر</th><th>محافظ</th><th>أساسي</th><th>متفائل</th></tr></thead><tbody>
+<tr><th scope="row">التحصيل المحتمل من الذمم</th><td id="conservative-cash">—</td><td id="base-cash">—</td><td id="upside-cash">—</td></tr>
+<tr><th scope="row">قيمة العقود المتوقعة</th><td id="conservative-contracts">—</td><td id="base-contracts">—</td><td id="upside-contracts">—</td></tr>
+<tr><th scope="row">مساهمة إجمالية محتملة</th><td id="conservative-gross">—</td><td id="base-gross">—</td><td id="upside-gross">—</td></tr>
+<tr><th scope="row">تكلفة المتابعة</th><td id="conservative-cost">—</td><td id="base-cost">—</td><td id="upside-cost">—</td></tr>
+<tr><th scope="row">صافي المساهمة التقديري</th><td id="conservative-net">—</td><td id="base-net">—</td><td id="upside-net">—</td></tr>
+</tbody></table></div>
+<p class="smallprint">قد تكون صافي المساهمة سالبة. يُعرض تحصيل الذمم وقيمة الفرص البيعية كلٌ على حدة ولا يُجمعان باعتبارهما «نقدًا محصلًا».</p>
+</section>
+</section>
+<section class="notice estimator-note">حماية الخصوصية: لا تدخل أسماء أو أرقام هواتف أو بيانات حسابات أو سجلات عملاء أو عقود سرية. تبقى القيم داخل جلسة المتصفح ولا تحفظها الحاسبة ولا ترسلها.</section>
+<section class="closebox estimator-cta"><div><h2>حوّل التقدير إلى مراجعة محددة النطاق.</h2><p>يمكن لمراجعة غير ملزمة اختبار الافتراضات باستخدام بيانات تاريخية إجمالية ومجهولة الهوية.</p></div><a class="btn" href="request.html?service=recover-ai&amp;utm_source=recovery_estimator&amp;utm_medium=owned_site&amp;utm_campaign=recover_ai">اطلب مراجعة</a></section>
+</main>
+<script src="../revenue-recovery-calculator-core.js"></script>
+<script src="../revenue-recovery-estimator-ui.js"></script>
+</body>
+</html>

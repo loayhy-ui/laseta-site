@@ -8,6 +8,8 @@ Arabic: https://laseta.net/ar/
 
 ## Business services
 - Recover AI: https://laseta.net/recover.html
+- Revenue Recovery Estimator: https://laseta.net/revenue-recovery-estimator.html
+- Revenue Recovery Estimator (Arabic): https://laseta.net/ar/revenue-recovery-estimator.html
 - Automation: https://laseta.net/automate.html
 - Creative Testing: https://laseta.net/adfactory.html
 
