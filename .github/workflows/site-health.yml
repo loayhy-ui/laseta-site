@@ -119,40 +119,28 @@ jobs:
                   broken.append((url, 'ERROR', str(e)))
 
           if policy:
-              print('\nBLOCKED PLATFORM MARKERS:')
+              print('\\nBLOCKED PLATFORM MARKERS:')
               for item in policy:
                   print(' | '.join(map(str, item)))
 
           if broken:
-              print('\nBROKEN URLS:')
+              print('\\nBROKEN URLS:')
               for item in broken:
                   print(' | '.join(map(str, item)))
 
           if broken or policy:
               sys.exit(1)
 
-          print('\nOK: sitemap, internal links and platform-promotion guard are healthy.')
+          print('\\nOK: sitemap, internal links and platform-promotion guard are healthy.')
           PY
           rc=$?
           cat site-health-report.txt
           echo "exit_code=$rc" >> "$GITHUB_OUTPUT"
           exit 0
 
-      - name: Open issue when a site-health or platform-policy problem is found
+      - name: Keep findings in workflow logs only
         if: steps.health.outputs.exit_code != '0'
-        env:
-          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          title='Automated site health alert: action required'
-          if ! gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json title --jq '.[].title' | grep -Fxq "$title"; then
-            {
-              echo 'The automated LASETA site-health check found a broken URL or blocked external-platform marker.'
-              echo
-              echo '```'
-              cat site-health-report.txt
-              echo '```'
-            } > issue-body.md
-            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file issue-body.md
-          fi
-          exit 1
+          echo "Site-health findings are retained in the preceding workflow log only."
+          echo "No GitHub issue, email, or user notification is created by this workflow."
