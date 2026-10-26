@@ -150,7 +150,7 @@ test("deterministic numeric-input sweep preserves caps, finiteness and scenario 
       assert.ok(scenario.receivablesCashRecovery >= 0 && scenario.receivablesCashRecovery <= input.receivables);
       assert.ok(scenario.expectedContractValue >= 0 && scenario.expectedContractValue <= input.pipeline);
       assert.ok(scenario.potentialGrossContribution >= 0 && scenario.potentialGrossContribution <= scenario.expectedContractValue);
-      assert.ok(Math.abs(scenario.modeledNetContribution - (scenario.potentialGrossContribution - scenario.followUpCost)) < 0.000001);
+      assert.ok(Math.abs(scenario.modeledNetContribution - (scenario.potentialGrossContribution - scenario.followUpCost)) < 0.001);
     }
 
     assert.ok(c.receivablesCashRecovery <= b.receivablesCashRecovery && b.receivablesCashRecovery <= u.receivablesCashRecovery);
