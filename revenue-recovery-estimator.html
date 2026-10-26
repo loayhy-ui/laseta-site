@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revenue Recovery Scenario Estimator | LASETA</title>
+<meta name="description" content="Model an illustrative revenue recovery scenario using your own lead volume, conversion assumptions, average deal value and gross margin. Runs in your browser without customer data.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="en-SA" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="ar-SA" href="https://laseta.net/ar/revenue-recovery-estimator.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="service.css">
+<link rel="stylesheet" href="revenue-recovery-estimator.css">
+<meta property="og:title" content="Revenue Recovery Scenario Estimator | LASETA">
+<meta property="og:description" content="Estimate a conversion-gap scenario with your own assumptions. No customer files required.">
+<meta property="og:url" content="https://laseta.net/revenue-recovery-estimator.html">
+<meta property="og:type" content="website">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="logo" href="/">LASETA <span>GROUP</span></a>
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="recover.html">Recover AI</a>
+      <a class="lang" href="ar/revenue-recovery-estimator.html">العربية</a>
+      <a class="cta" href="https://tally.so/r/Me0EPE?utm_source=laseta_estimator&amp;utm_medium=organic&amp;utm_campaign=revenue_recovery_calculator">Request Fit Check</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="calc-shell">
+      <div class="crumb"><a href="/">Home</a> / <a href="recover.html">Recover AI</a> / Scenario Estimator</div>
+      <div class="eyebrow">LASETA Recover AI · Browser-only estimator</div>
+      <h1>Model the upside of improving follow-up.</h1>
+      <p class="lead">Use your own approximate numbers to test a conversion-gap scenario before deciding whether a revenue recovery workflow deserves attention.</p>
+      <div class="trust">
+        <span class="pill">No customer records</span>
+        <span class="pill">No data uploaded</span>
+        <span class="pill">No sales guarantee</span>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="calc-shell calc-layout">
+      <form class="calc-card" id="recoveryCalc">
+        <h2>Your assumptions</h2>
+        <p class="calc-small">Use recent averages where available. These values stay in this browser and are not sent to LASETA.</p>
+        <div class="calc-fields">
+          <label class="calc-field" for="leads">Qualified leads per month
+            <input id="leads" type="number" min="0" max="10000000" step="1" value="100" inputmode="decimal">
+            <small>Leads that are relevant enough to be considered real opportunities.</small>
+          </label>
+          <label class="calc-field" for="currentRate">Current conversion rate (%)
+            <input id="currentRate" type="number" min="0" max="100" step="0.1" value="12" inputmode="decimal">
+            <small>Share of qualified leads that become paying customers.</small>
+          </label>
+          <label class="calc-field" for="targetRate">Target conversion rate (%)
+            <input id="targetRate" type="number" min="0" max="100" step="0.1" value="16" inputmode="decimal">
+            <small>A scenario to test, not a promised result.</small>
+          </label>
+          <label class="calc-field" for="gapRecovery">Assumed share of the gap recovered (%)
+            <input id="gapRecovery" type="number" min="0" max="100" step="1" value="25" inputmode="decimal">
+            <small>How much of the difference you believe a better process might close.</small>
+          </label>
+          <label class="calc-field" for="dealValue">Average revenue per sale (SAR)
+            <input id="dealValue" type="number" min="0" max="1000000000" step="100" value="5000" inputmode="decimal">
+            <small>Use the average collected sale value if you have it.</small>
+          </label>
+          <label class="calc-field" for="margin">Gross margin (%)
+            <input id="margin" type="number" min="0" max="100" step="1" value="30" inputmode="decimal">
+            <small>Revenue less direct delivery costs, before overhead and tax.</small>
+          </label>
+        </div>
+        <div class="calc-actions">
+          <button class="btn primary" type="submit">Recalculate scenario</button>
+          <button class="btn secondary" type="button" id="downloadEstimate">Export CSV</button>
+        </div>
+      </form>
+      <aside class="calc-card" aria-live="polite">
+        <h2>Illustrative scenario</h2>
+        <div class="calc-results">
+          <div class="calc-result primary-result">
+            <small>Potential incremental monthly revenue</small>
+            <strong id="monthlyRevenue">SAR 0</strong>
+          </div>
+          <div class="calc-result">
+            <small>Incremental wins per month</small>
+            <strong id="incrementalWins">0</strong>
+          </div>
+          <div class="calc-result">
+            <small>Potential monthly gross profit</small>
+            <strong id="monthlyProfit">SAR 0</strong>
+          </div>
+          <div class="calc-result">
+            <small>Annualized equivalent revenue</small>
+            <strong id="annualRevenue">SAR 0</strong>
+          </div>
+        </div>
+        <div class="calc-note" id="scenarioNote">Illustrative scenario only.</div>
+        <label class="calc-field" for="estimateSummary" style="margin-top:16px">Scenario summary
+          <textarea class="calc-summary" id="estimateSummary" readonly rows="7"></textarea>
+        </label>
+        <div class="calc-actions">
+          <button class="btn secondary" type="button" id="copyEstimate">Copy summary</button>
+          <a class="btn primary" href="https://tally.so/r/Me0EPE?utm_source=laseta_estimator&amp;utm_medium=organic&amp;utm_campaign=revenue_recovery_calculator">Request a non-binding fit check</a>
+        </div>
+        <p class="calc-small" id="copyStatus" role="status"></p>
+      </aside>
+    </div>
+  </section>
+  <section>
+    <div class="calc-shell calc-method">
+      <h2>How the estimate works</h2>
+      <ol>
+        <li>Calculate the difference between the current and target conversion rates.</li>
+        <li>Apply your assumed recoverable share to that gap and your monthly qualified lead volume.</li>
+        <li>Multiply the scenario's additional wins by average revenue per sale.</li>
+        <li>Apply gross margin to estimate gross profit before overhead, tax and collection risk.</li>
+      </ol>
+      <div class="calc-note">This is a planning aid, not a forecast, valuation, or guarantee. It does not prove that any revenue can be recovered. Validate assumptions against actual sales and collected cash, avoid double-counting opportunities, and do not upload customer-level or confidential data.</div>
+      <p class="calc-small">The calculator runs locally in your browser. It has no login, analytics submission, file upload or external calculation service.</p>
+    </div>
+  </section>
+  <section>
+    <div class="calc-shell closebox">
+      <div><h2>One commercial bottleneck at a time.</h2><p>If the scenario suggests a worthwhile question, describe the process at a high level. No customer files are needed for the first review.</p></div>
+      <a class="btn" href="https://tally.so/r/Me0EPE?utm_source=laseta_estimator&amp;utm_medium=organic&amp;utm_campaign=revenue_recovery_calculator">Request Fit Check</a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap foot"><strong>LASETA GROUP</strong><span>Revenue Recovery Scenario Estimator</span><span>© 2026 LASETA</span></div></footer>
+<script src="revenue-recovery-estimator.js" defer></script>
+</body>
+</html>
