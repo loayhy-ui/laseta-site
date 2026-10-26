@@ -1,0 +1,23 @@
+ .calc-shell{width:min(calc(100% - 36px),var(--max));margin:auto}
+.calc-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start}
+.calc-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
+.calc-card h2{color:var(--green);margin-top:0}
+.calc-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.calc-field{display:grid;gap:7px;font-weight:800;color:var(--green)}
+.calc-field input{width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--text);background:#fff}
+.calc-field small{font-weight:400;color:var(--muted);line-height:1.45}
+.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.calc-result{padding:18px;border-radius:16px;background:var(--cream);border:1px solid var(--line);min-width:0}
+.calc-result small{display:block;color:var(--muted);font-weight:700;margin-bottom:7px}
+.calc-result strong{display:block;color:var(--green);font-size:clamp(21px,3vw,30px);line-height:1.2;overflow-wrap:anywhere}
+.calc-result.primary-result{grid-column:1/-1;background:var(--green);border-color:var(--green)}
+.calc-result.primary-result small,.calc-result.primary-result strong{color:#fff}
+.calc-result.primary-result strong{font-size:clamp(30px,4vw,42px)}
+.calc-note{padding:15px 17px;border-radius:14px;background:#fff7e4;border:1px solid rgba(200,164,93,.55);color:var(--green);font-size:14px;margin-top:16px}
+.calc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.calc-actions button{font:inherit;cursor:pointer;border:1px solid var(--line)}
+.calc-summary{width:100%;min-height:116px;margin-top:16px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fbfaf7;color:var(--text);font:inherit;resize:vertical}
+.calc-method{max-width:850px}
+.calc-method li{margin:9px 0}
+.calc-small{color:var(--muted);font-size:14px}
+@media(max-width:850px){.calc-layout{grid-template-columns:1fr}.calc-fields,.calc-results{grid-template-columns:1fr}.calc-result.primary-result{grid-column:auto}.calc-card{padding:20px}}
