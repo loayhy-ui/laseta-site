@@ -54,14 +54,38 @@
     return rounded;
   }
 
+  // Return the greatest two-decimal currency amount not exceeding the supplied cap.
+  // String slicing avoids a binary-float multiplication boundary rounding a cap upward.
+  function floorToCents(value) {
+    if (!Number.isFinite(value)) {
+      throw new RangeError("Currency cap must be finite.");
+    }
+    if (value <= 0 || value < 0.01) {
+      return 0;
+    }
+    var decimal = String(value);
+    var point = decimal.indexOf(".");
+    if (point === -1) {
+      return value;
+    }
+    var fraction = (decimal.slice(point + 1, point + 3) + "00").slice(0, 2);
+    return Number(decimal.slice(0, point) + "." + fraction);
+  }
+
+  function roundWithinCap(value, cap) {
+    return Math.min(round(value), floorToCents(cap));
+  }
+
   function scenario(input, scale) {
     var cashRecovery = Math.min(input.receivables, input.receivables * input.recoveryRate * scale);
     var contractValue = Math.min(input.pipeline, input.pipeline * input.reactivationRate * input.closeRate * scale);
-    var grossContribution = contractValue * input.grossMargin;
+    var roundedCashRecovery = roundWithinCap(cashRecovery, input.receivables);
+    var roundedContractValue = roundWithinCap(contractValue, input.pipeline);
+    var grossContribution = Math.min(roundedContractValue, round(contractValue * input.grossMargin));
     return {
-      receivablesCashRecovery: round(cashRecovery),
-      expectedContractValue: round(contractValue),
-      potentialGrossContribution: round(grossContribution),
+      receivablesCashRecovery: roundedCashRecovery,
+      expectedContractValue: roundedContractValue,
+      potentialGrossContribution: grossContribution,
       followUpCost: round(input.followUpCost),
       modeledNetContribution: round(grossContribution - input.followUpCost)
     };
