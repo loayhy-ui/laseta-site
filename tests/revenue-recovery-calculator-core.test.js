@@ -57,9 +57,34 @@ test("numeric strings from browser controls are accepted", () => {
     receivables: "100000", recoveryRate: "10", pipeline: "200000",
     reactivationRate: "20", closeRate: "25", grossMargin: "30", followUpCost: "2500"
   }).modeledNetContribution, 500);
+  assert.equal(calculateBase({
+    receivables: " 100.5 ", recoveryRate: "1e1", pipeline: "200",
+    reactivationRate: "20", closeRate: "25", grossMargin: "30", followUpCost: "0"
+  }).receivablesCashRecovery, 10.05);
 });
 
-test("negative, blank, non-finite and out-of-range values are rejected", () => {
+test("booleans, arrays, objects, non-finite numbers and non-decimal strings are rejected", () => {
+  const keys = [
+    "receivables", "recoveryRate", "pipeline", "reactivationRate",
+    "closeRate", "grossMargin", "followUpCost"
+  ];
+  const invalidValues = [
+    true, false, [], [10], {}, null, undefined, Symbol("not numeric"),
+    Infinity, -Infinity, NaN, "0x10", "Infinity", "NaN", "1,000", " "
+  ];
+
+  for (const key of keys) {
+    for (const value of invalidValues) {
+      assert.throws(
+        () => calculateBase({ ...example, [key]: value }),
+        TypeError,
+        `${key} must reject ${String(value)}`
+      );
+    }
+  }
+});
+
+test("negative, blank and out-of-range values are rejected", () => {
   const invalid = [
     [{ ...example, receivables: -1 }, RangeError],
     [{ ...example, pipeline: maxAmount + 1 }, RangeError],
@@ -67,10 +92,9 @@ test("negative, blank, non-finite and out-of-range values are rejected", () => {
     [{ ...example, recoveryRate: 101 }, RangeError],
     [{ ...example, reactivationRate: -0.1 }, RangeError],
     [{ ...example, closeRate: 101 }, RangeError],
+    [{ ...example, grossMargin: 101 }, RangeError],
     [{ ...example, grossMargin: " " }, TypeError],
-    [{ ...example, receivables: "" }, TypeError],
-    [{ ...example, pipeline: Infinity }, TypeError],
-    [{ ...example, recoveryRate: NaN }, TypeError]
+    [{ ...example, receivables: "" }, TypeError]
   ];
   for (const [input, ErrorType] of invalid) {
     assert.throws(() => calculateBase(input), ErrorType);
