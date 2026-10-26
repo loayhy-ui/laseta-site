@@ -82,12 +82,13 @@
     var roundedCashRecovery = roundWithinCap(cashRecovery, input.receivables);
     var roundedContractValue = roundWithinCap(contractValue, input.pipeline);
     var grossContribution = Math.min(roundedContractValue, round(contractValue * input.grossMargin));
+    var roundedFollowUpCost = round(input.followUpCost);
     return {
       receivablesCashRecovery: roundedCashRecovery,
       expectedContractValue: roundedContractValue,
       potentialGrossContribution: grossContribution,
-      followUpCost: round(input.followUpCost),
-      modeledNetContribution: round(grossContribution - input.followUpCost)
+      followUpCost: roundedFollowUpCost,
+      modeledNetContribution: round(grossContribution - roundedFollowUpCost)
     };
   }
 
