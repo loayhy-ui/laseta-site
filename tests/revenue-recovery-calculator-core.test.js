@@ -57,6 +57,16 @@ test("rounded currency outputs never exceed fractional monetary caps", () => {
   assert.equal(result.upside.potentialGrossContribution, 100);
 });
 
+test("modeled net reconciles to the displayed rounded follow-up cost", () => {
+  const result = calculateBase({
+    receivables: 100, recoveryRate: 10, pipeline: 100,
+    reactivationRate: 100, closeRate: 100, grossMargin: 10, followUpCost: 2.345
+  });
+  assert.equal(result.potentialGrossContribution, 10);
+  assert.equal(result.followUpCost, 2.35);
+  assert.equal(result.modeledNetContribution, 7.65);
+});
+
 test("zero values are valid", () => {
   assert.deepEqual(calculateBase({
     receivables: 0, recoveryRate: 0, pipeline: 0,
@@ -140,6 +150,7 @@ test("deterministic numeric-input sweep preserves caps, finiteness and scenario 
       assert.ok(scenario.receivablesCashRecovery >= 0 && scenario.receivablesCashRecovery <= input.receivables);
       assert.ok(scenario.expectedContractValue >= 0 && scenario.expectedContractValue <= input.pipeline);
       assert.ok(scenario.potentialGrossContribution >= 0 && scenario.potentialGrossContribution <= scenario.expectedContractValue);
+      assert.ok(Math.abs(scenario.modeledNetContribution - (scenario.potentialGrossContribution - scenario.followUpCost)) < 0.000001);
     }
 
     assert.ok(c.receivablesCashRecovery <= b.receivablesCashRecovery && b.receivablesCashRecovery <= u.receivablesCashRecovery);
