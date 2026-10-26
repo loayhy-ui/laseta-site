@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar-SA" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>حاسبة سيناريو استعادة الإيرادات | LASETA</title>
+<meta name="description" content="اختبر سيناريو افتراضيًا لتحسين التحويل باستخدام حجم الطلبات ونسب التحويل وقيمة الصفقة وهامش الربح. تعمل الحاسبة داخل المتصفح دون بيانات العملاء.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://laseta.net/ar/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="ar-SA" href="https://laseta.net/ar/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="en-SA" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../service.css">
+<link rel="stylesheet" href="../revenue-recovery-estimator.css">
+<meta property="og:title" content="حاسبة سيناريو استعادة الإيرادات | LASETA">
+<meta property="og:description" content="اختبر فجوة التحويل بافتراضاتك. لا حاجة إلى ملفات العملاء.">
+<meta property="og:url" content="https://laseta.net/ar/revenue-recovery-estimator.html">
+<meta property="og:type" content="website">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="logo" href="/ar/">LASETA <span>GROUP</span></a>
+    <nav class="navlinks" aria-label="التنقل الرئيسي">
+      <a href="recover.html">Recover AI</a>
+      <a class="lang" href="../revenue-recovery-estimator.html">English</a>
+      <a class="cta" href="https://tally.so/r/LD1NO2?utm_source=laseta_estimator_ar&amp;utm_medium=organic&amp;utm_campaign=revenue_recovery_calculator">اطلب مراجعة أولية</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="calc-shell">
+      <div class="crumb"><a href="/ar/">الرئيسية</a> / <a href="recover.html">Recover AI</a> / حاسبة السيناريو</div>
+      <div class="eyebrow">LASETA Recover AI · حاسبة داخل المتصفح</div>
+      <h1>اختبر أثر تحسين المتابعة على الإيراد.</h1>
+      <p class="lead">أدخل أرقامًا تقريبية من نشاطك لاختبار سيناريو لفجوة التحويل، قبل أن تقرر إن كان تحسين مسار استعادة الإيرادات يستحق التجربة.</p>
+      <div class="trust">
+        <span class="pill">لا حاجة إلى بيانات العملاء</span>
+        <span class="pill">لا تُرفع البيانات</span>
+        <span class="pill">لا يوجد ضمان للمبيعات</span>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="calc-shell calc-layout">
+      <form class="calc-card" id="recoveryCalc">
+        <h2>افتراضاتك</h2>
+        <p class="calc-small">استخدم متوسطات حديثة إن توفرت. تبقى القيم داخل المتصفح ولا تُرسل إلى LASETA.</p>
+        <div class="calc-fields">
+          <label class="calc-field" for="leads">الفرص المؤهلة شهريًا
+            <input id="leads" type="number" min="0" max="10000000" step="1" value="100" inputmode="decimal">
+            <small>الفرص التي تناسب العميل المستهدف فعلًا.</small>
+          </label>
+          <label class="calc-field" for="currentRate">نسبة التحويل الحالية (%)
+            <input id="currentRate" type="number" min="0" max="100" step="0.1" value="12" inputmode="decimal">
+            <small>نسبة الفرص المؤهلة التي تتحول إلى عملاء دافعين.</small>
+          </label>
+          <label class="calc-field" for="targetRate">نسبة التحويل المستهدفة (%)
+            <input id="targetRate" type="number" min="0" max="100" step="0.1" value="16" inputmode="decimal">
+            <small>افتراض للاختبار، وليس نتيجة مضمونة.</small>
+          </label>
+          <label class="calc-field" for="gapRecovery">النسبة المفترضة من الفجوة القابلة للاستعادة (%)
+            <input id="gapRecovery" type="number" min="0" max="100" step="1" value="25" inputmode="decimal">
+            <small>تقديرك للجزء الذي قد يغلقه تحسين العملية.</small>
+          </label>
+          <label class="calc-field" for="dealValue">متوسط الإيراد لكل صفقة (ر.س)
+            <input id="dealValue" type="number" min="0" max="1000000000" step="100" value="5000" inputmode="decimal">
+            <small>استخدم متوسط قيمة المبيعات المحصلة إن توفر.</small>
+          </label>
+          <label class="calc-field" for="margin">هامش الربح الإجمالي (%)
+            <input id="margin" type="number" min="0" max="100" step="1" value="30" inputmode="decimal">
+            <small>الإيراد بعد خصم تكاليف التنفيذ المباشرة، وقبل المصروفات والضريبة.</small>
+          </label>
+        </div>
+        <div class="calc-actions">
+          <button class="btn primary" type="submit">إعادة حساب السيناريو</button>
+          <button class="btn secondary" type="button" id="downloadEstimate">تصدير CSV</button>
+        </div>
+      </form>
+      <aside class="calc-card" aria-live="polite">
+        <h2>سيناريو افتراضي</h2>
+        <div class="calc-results">
+          <div class="calc-result primary-result">
+            <small>الإيراد الإضافي المحتمل شهريًا</small>
+            <strong id="monthlyRevenue">0 ر.س</strong>
+          </div>
+          <div class="calc-result">
+            <small>الصفقات الإضافية شهريًا</small>
+            <strong id="incrementalWins">0</strong>
+          </div>
+          <div class="calc-result">
+            <small>الربح الإجمالي الإضافي شهريًا</small>
+            <strong id="monthlyProfit">0 ر.س</strong>
+          </div>
+          <div class="calc-result">
+            <small>الإيراد المكافئ سنويًا</small>
+            <strong id="annualRevenue">0 ر.س</strong>
+          </div>
+        </div>
+        <div class="calc-note" id="scenarioNote">هذا سيناريو افتراضي فقط.</div>
+        <label class="calc-field" for="estimateSummary" style="margin-top:16px">ملخص السيناريو
+          <textarea class="calc-summary" id="estimateSummary" readonly rows="7"></textarea>
+        </label>
+        <div class="calc-actions">
+          <button class="btn secondary" type="button" id="copyEstimate">نسخ الملخص</button>
+          <a class="btn primary" href="https://tally.so/r/LD1NO2?utm_source=laseta_estimator_ar&amp;utm_medium=organic&amp;utm_campaign=revenue_recovery_calculator">اطلب مراجعة أولية غير ملزمة</a>
+        </div>
+        <p class="calc-small" id="copyStatus" role="status"></p>
+      </aside>
+    </div>
+  </section>
+  <section>
+    <div class="calc-shell calc-method">
+      <h2>كيف تُحسب النتيجة؟</h2>
+      <ol>
+        <li>حساب الفرق بين نسبة التحويل الحالية والمستهدفة.</li>
+        <li>تطبيق النسبة المفترضة القابلة للاستعادة على الفجوة وحجم الفرص المؤهلة شهريًا.</li>
+        <li>ضرب الصفقات الإضافية الافتراضية في متوسط الإيراد لكل صفقة.</li>
+        <li>تطبيق هامش الربح الإجمالي لتقدير الربح قبل المصروفات والضريبة ومخاطر التحصيل.</li>
+      </ol>
+      <div class="calc-note">هذه أداة تخطيط وليست توقعًا أو تقييمًا أو ضمانًا. لا تثبت أن الإيراد قابل للاستعادة. راجع المبيعات والتحصيلات الفعلية، وتجنب احتساب الفرصة نفسها مرتين، ولا ترفع بيانات العملاء أو السجلات السرية.</div>
+      <p class="calc-small">تعمل الحاسبة محليًا داخل المتصفح، ولا تتطلب تسجيل دخول أو رفع ملفات أو إرسال البيانات إلى خدمة حساب خارجية.</p>
+    </div>
+  </section>
+  <section>
+    <div class="calc-shell closebox">
+      <div><h2>ابدأ بمشكلة تجارية واحدة.</h2><p>إذا أظهر السيناريو سؤالًا يستحق البحث، صف مسار العمل بصورة عامة. لا تحتاج إلى إرسال ملفات العملاء للمراجعة الأولية.</p></div>
+      <a class="btn" href="https://tally.so/r/LD1NO2?utm_source=laseta_estimator_ar&amp;utm_medium=organic&amp;utm_campaign=revenue_recovery_calculator">اطلب المراجعة الأولية</a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap foot"><strong>LASETA GROUP</strong><span>حاسبة سيناريو استعادة الإيرادات</span><span>© 2026 LASETA</span></div></footer>
+<script src="../revenue-recovery-estimator.js" defer></script>
+</body>
+</html>
