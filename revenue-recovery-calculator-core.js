@@ -2,12 +2,23 @@
   "use strict";
 
   var MAX_AMOUNT = 1000000000000;
+  var DECIMAL_NUMBER = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i;
 
   function readNumber(value, name, min, max) {
-    if (value === null || value === undefined || (typeof value === "string" && value.trim() === "")) {
-      throw new TypeError(name + " is required.");
+    var number;
+
+    if (typeof value === "number") {
+      number = value;
+    } else if (typeof value === "string") {
+      var text = value.trim();
+      if (text === "" || !DECIMAL_NUMBER.test(text)) {
+        throw new TypeError(name + " must be a number or decimal numeric string.");
+      }
+      number = Number(text);
+    } else {
+      throw new TypeError(name + " must be a number or decimal numeric string.");
     }
-    var number = Number(value);
+
     if (!Number.isFinite(number)) {
       throw new TypeError(name + " must be finite.");
     }
