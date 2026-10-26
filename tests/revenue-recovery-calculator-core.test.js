@@ -42,6 +42,21 @@ test("upside is capped at the supplied receivables and pipeline", () => {
   assert.equal(result.upside.expectedContractValue, 1000);
 });
 
+test("rounded currency outputs never exceed fractional monetary caps", () => {
+  const result = calculateAll({
+    receivables: 100.006, recoveryRate: 100, pipeline: 100.006,
+    reactivationRate: 100, closeRate: 100, grossMargin: 100, followUpCost: 0
+  });
+  for (const scenario of Object.values(result)) {
+    assert.ok(scenario.receivablesCashRecovery <= 100.006);
+    assert.ok(scenario.expectedContractValue <= 100.006);
+    assert.ok(scenario.potentialGrossContribution <= scenario.expectedContractValue);
+  }
+  assert.equal(result.upside.receivablesCashRecovery, 100);
+  assert.equal(result.upside.expectedContractValue, 100);
+  assert.equal(result.upside.potentialGrossContribution, 100);
+});
+
 test("zero values are valid", () => {
   assert.deepEqual(calculateBase({
     receivables: 0, recoveryRate: 0, pipeline: 0,
@@ -98,6 +113,39 @@ test("negative, blank and out-of-range values are rejected", () => {
   ];
   for (const [input, ErrorType] of invalid) {
     assert.throws(() => calculateBase(input), ErrorType);
+  }
+});
+
+test("deterministic numeric-input sweep preserves caps, finiteness and scenario ordering", () => {
+  let seed = 0x12345678;
+  function rand() {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    return seed / 0x100000000;
+  }
+
+  for (let i = 0; i < 5000; i++) {
+    const input = {
+      receivables: rand() * maxAmount,
+      recoveryRate: rand() * 100,
+      pipeline: rand() * maxAmount,
+      reactivationRate: rand() * 100,
+      closeRate: rand() * 100,
+      grossMargin: rand() * 100,
+      followUpCost: rand() * maxAmount
+    };
+    const { conservative: c, base: b, upside: u } = calculateAll(input);
+
+    for (const scenario of [c, b, u]) {
+      for (const value of Object.values(scenario)) assert.ok(Number.isFinite(value));
+      assert.ok(scenario.receivablesCashRecovery >= 0 && scenario.receivablesCashRecovery <= input.receivables);
+      assert.ok(scenario.expectedContractValue >= 0 && scenario.expectedContractValue <= input.pipeline);
+      assert.ok(scenario.potentialGrossContribution >= 0 && scenario.potentialGrossContribution <= scenario.expectedContractValue);
+    }
+
+    assert.ok(c.receivablesCashRecovery <= b.receivablesCashRecovery && b.receivablesCashRecovery <= u.receivablesCashRecovery);
+    assert.ok(c.expectedContractValue <= b.expectedContractValue && b.expectedContractValue <= u.expectedContractValue);
+    assert.ok(c.potentialGrossContribution <= b.potentialGrossContribution && b.potentialGrossContribution <= u.potentialGrossContribution);
+    assert.ok(c.modeledNetContribution <= b.modeledNetContribution && b.modeledNetContribution <= u.modeledNetContribution);
   }
 });
 
