@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revenue Recovery Estimator | LASETA</title>
+<meta name="description" content="Model potential receivables recovery and dormant B2B pipeline contribution using aggregate assumptions, without uploading customer data.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="en-SA" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="ar-SA" href="https://laseta.net/ar/revenue-recovery-estimator.html">
+<link rel="alternate" hreflang="x-default" href="https://laseta.net/revenue-recovery-estimator.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="service.css">
+<link rel="stylesheet" href="estimator.css">
+<meta property="og:title" content="Revenue Recovery Estimator | LASETA">
+<meta property="og:description" content="A privacy-first, illustrative calculator for receivables recovery and dormant B2B pipeline contribution.">
+<meta property="og:url" content="https://laseta.net/revenue-recovery-estimator.html">
+<meta property="og:type" content="website">
+</head>
+<body>
+<header class="nav"><div class="wrap navin"><a class="logo" href="/">LASETA <span>GROUP</span></a><nav class="navlinks"><a href="recover.html">Recover AI</a><a class="lang" href="ar/revenue-recovery-estimator.html">العربية</a><a class="cta" href="https://tally.so/r/Me0EPE?utm_source=recovery_estimator&amp;utm_medium=owned_site&amp;utm_campaign=recover_ai&amp;utm_content=nav">Request a Review</a></nav></div></header>
+<main class="wrap estimator-page">
+<section class="hero estimator-hero">
+<div class="eyebrow">LASETA Recover AI · Free Estimator</div>
+<h1>Revenue Recovery Estimator</h1>
+<p class="lead">Model potential recovery from existing receivables separately from contribution on dormant quotations. Use aggregate assumptions only; this tool does not access your systems or upload your inputs.</p>
+<div class="notice">An estimate is not a receipt, a signed contract, proof of collected cash, a forecast guarantee or evidence of business value. Only bank-confirmed receipts count as collected cash.</div>
+</section>
+<section class="estimator-layout" aria-label="Calculator and results">
+<article class="card">
+<h2>Enter aggregate assumptions</h2>
+<form id="estimatorForm" class="form estimator-form">
+<label>Receivables balance (SAR)<input id="receivables" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" required></label>
+<label>Potential recovery share (%)<input id="recoveryRate" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>Dormant pipeline value (SAR)<input id="pipeline" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" required></label>
+<label>Reactivation rate (%)<input id="reactivationRate" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>Close rate (%)<input id="closeRate" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>Contribution margin (%)<input id="grossMargin" type="number" min="0" max="100" step="any" inputmode="decimal" required></label>
+<label>Follow-up cost (SAR)<input id="followUpCost" type="number" min="0" max="1000000000000" step="any" inputmode="decimal" required></label>
+<div class="form-actions"><button class="btn primary" type="submit">Calculate Scenarios</button><button class="btn secondary" type="reset">Clear Inputs</button></div>
+</form>
+<p id="status" role="status" aria-live="polite"></p>
+</article>
+<section id="results" class="results" aria-labelledby="resultsTitle" hidden>
+<h2 id="resultsTitle">Illustrative scenarios</h2>
+<div class="table-scroll"><table><thead><tr><th>Metric</th><th>Conservative</th><th>Base</th><th>Upside</th></tr></thead><tbody>
+<tr><th scope="row">Potential receivables cash recovery</th><td id="conservative-cash">—</td><td id="base-cash">—</td><td id="upside-cash">—</td></tr>
+<tr><th scope="row">Expected contract value</th><td id="conservative-contracts">—</td><td id="base-contracts">—</td><td id="upside-contracts">—</td></tr>
+<tr><th scope="row">Potential gross contribution</th><td id="conservative-gross">—</td><td id="base-gross">—</td><td id="upside-gross">—</td></tr>
+<tr><th scope="row">Follow-up cost</th><td id="conservative-cost">—</td><td id="base-cost">—</td><td id="upside-cost">—</td></tr>
+<tr><th scope="row">Modeled net contribution</th><td id="conservative-net">—</td><td id="base-net">—</td><td id="upside-net">—</td></tr>
+</tbody></table></div>
+<p class="smallprint">Net contribution may be negative. Receivables recovery and dormant pipeline are shown separately and are not added together as “cash collected.”</p>
+</section>
+</section>
+<section class="notice estimator-note">Privacy guardrail: do not enter names, phone numbers, account details, customer records or confidential contract information. Values stay in this browser session and are not saved or transmitted by this calculator.</section>
+<section class="closebox estimator-cta"><div><h2>Turn an estimate into a scoped review.</h2><p>A non-binding review can test assumptions against anonymized historical aggregates.</p></div><a class="btn" href="https://tally.so/r/Me0EPE?utm_source=recovery_estimator&amp;utm_medium=owned_site&amp;utm_campaign=recover_ai&amp;utm_content=cta">Request a Review</a></section>
+</main>
+<script src="revenue-recovery-calculator-core.js"></script>
+<script src="revenue-recovery-estimator-ui.js"></script>
+</body>
+</html>
