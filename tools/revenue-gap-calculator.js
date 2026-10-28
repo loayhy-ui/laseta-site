@@ -33,6 +33,9 @@
     const button = document.getElementById("langToggle");
     button.textContent = language === "ar" ? "English" : "العربية";
     button.setAttribute("aria-label", language === "ar" ? "Switch to English" : "التبديل إلى العربية");
+    document.getElementById("fitCheckCta").href = language === "ar"
+      ? "https://tally.so/r/LD1NO2"
+      : "https://tally.so/r/Me0EPE";
     calculate();
   }
   ids.forEach((id) => document.getElementById(id).addEventListener("input", calculate));
