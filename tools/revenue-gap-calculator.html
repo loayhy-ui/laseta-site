@@ -1,16 +1,53 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LASETA Revenue Gap Calculator — Draft</title></head>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LASETA Revenue Gap Calculator — Draft</title>
+<style>
+:root{--ink:#183b34;--muted:#52665f;--green:#0f2f2a;--gold:#c6a45b;--paper:#f5f6f1;--line:#d9e1db;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}
+main{max-width:900px;margin:auto;padding:24px 16px 44px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--gold);font-size:.8em}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:10px;background:white;color:var(--green);padding:9px 13px;font-weight:700}
+header{margin:20px 0;background:var(--green);color:white;padding:26px;border-radius:20px}.eyebrow{color:#e4c879;font-size:.82rem;font-weight:800;letter-spacing:.07em}h1{font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin:10px 0}header p{color:#e1e9e5;max-width:720px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px}h2{font-size:1.2rem;margin:0 0 15px}
+label{display:block;font-weight:700;margin:13px 0}input{display:block;width:100%;margin-top:6px;padding:11px;border:1px solid #b8c8bf;border-radius:9px;font:inherit;color:var(--ink)}input:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+output{font-weight:800;color:var(--green)}.result{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0;background:#fbfcf9}.result strong{display:block;font-size:.9rem;color:var(--muted);font-weight:600}.result output{display:block;font-size:1.45rem;margin-top:3px}.result.main{background:#edf3ee;border-color:#c6d5ca}
+.note{font-size:.84rem;color:var(--muted);margin-top:15px}.foot{font-size:.82rem;color:var(--muted);margin-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+[dir=rtl] body{text-align:right}
+@media(max-width:700px){.grid{grid-template-columns:1fr}header{padding:20px}.card{padding:16px}}
+</style>
+<script src="revenue-gap-calculator.js" defer></script>
+</head>
 <body>
 <main>
-<h1>LASETA Revenue Gap Calculator</h1>
-<p>Draft, portable, no customer data required. Illustrative planning aid only; not a forecast, valuation, or evidence of collected revenue.</p>
-<label>Stalled quotes per month <input id="quotes" type="number" min="0" value="100"></label>
-<label>Re-engageable share (%) <input id="reach" type="number" min="0" max="100" value="30"></label>
-<label>Close rate after re-engagement (%) <input id="close" type="number" min="0" max="100" value="20"></label>
-<label>Average sale value (SAR) <input id="value" type="number" min="0" value="5000"></label>
-<label>Gross margin (%) <input id="margin" type="number" min="0" max="100" value="25"></label>
-<h2>Illustrative results</h2><p>Potential sales per month: <output id="sales">SAR 30,000</output></p><p>Gross profit per month: <output id="profit">SAR 7,500</output></p><p>Annualized sales scenario: <output id="annual">SAR 360,000</output></p>
-<p>Example values are prefilled. Replace with your own aggregate figures. Actual results depend on verified completed sales, costs, lead quality and timing.</p>
+<div class="top"><div class="brand">LASETA <span>REVENUE SYSTEMS</span></div><button id="langToggle" type="button" aria-label="Switch language">العربية</button></div>
+<header>
+<div class="eyebrow" data-en="REVENUE RECOVERY · SCENARIO PLANNER" data-ar="استعادة الإيرادات · حاسبة سيناريو">REVENUE RECOVERY · SCENARIO PLANNER</div>
+<h1 data-en="Estimate the value of better follow-up." data-ar="قدّر قيمة تحسين متابعة الفرص التجارية.">Estimate the value of better follow-up.</h1>
+<p data-en="Use approximate, aggregate numbers to model a possible opportunity in stalled quotes or dormant enquiries. No customer-level data is needed." data-ar="استخدم أرقامًا إجمالية تقريبية لتقدير فرصة محتملة في عروض الأسعار المتعثرة أو الاستفسارات غير النشطة. لا حاجة إلى بيانات على مستوى العميل.">Use approximate, aggregate numbers to model a possible opportunity in stalled quotes or dormant enquiries. No customer-level data is needed.</p>
+</header>
+<div class="grid">
+<section class="card">
+<h2 data-en="Your assumptions" data-ar="افتراضاتك">Your assumptions</h2>
+<label><span data-en="Stalled quotes / enquiries per month" data-ar="العروض أو الاستفسارات المتعثرة شهريًا">Stalled quotes / enquiries per month</span><input id="quotes" type="number" min="0" max="100000000" step="1" value="100" inputmode="numeric"></label>
+<label><span data-en="Share you may re-engage (%)" data-ar="النسبة التي يمكن إعادة التواصل معها (%)">Share you may re-engage (%)</span><input id="reach" type="number" min="0" max="100" step="1" value="30" inputmode="decimal"></label>
+<label><span data-en="Estimated close rate after re-engagement (%)" data-ar="معدل الإغلاق المتوقع بعد إعادة التواصل (%)">Estimated close rate after re-engagement (%)</span><input id="close" type="number" min="0" max="100" step="1" value="20" inputmode="decimal"></label>
+<label><span data-en="Average sale value (SAR)" data-ar="متوسط قيمة البيع (ريال سعودي)">Average sale value (SAR)</span><input id="value" type="number" min="0" max="100000000000" step="100" value="5000" inputmode="decimal"></label>
+<label><span data-en="Gross margin (%)" data-ar="هامش الربح الإجمالي (%)">Gross margin (%)</span><input id="margin" type="number" min="0" max="100" step="1" value="25" inputmode="decimal"></label>
+<p class="note" data-en="Example values are prefilled. Replace them with your own aggregate figures." data-ar="القيم المعبأة مثال توضيحي. استبدلها بأرقامك الإجمالية.">Example values are prefilled. Replace them with your own aggregate figures.</p>
+</section>
+<section class="card">
+<h2 data-en="Illustrative scenario" data-ar="السيناريو التقديري">Illustrative scenario</h2>
+<div class="result"><strong data-en="Potential re-engagements / month" data-ar="فرص إعادة التواصل شهريًا">Potential re-engagements / month</strong><output id="eligible">30</output></div>
+<div class="result"><strong data-en="Estimated wins / month" data-ar="المبيعات المتوقعة شهريًا">Estimated wins / month</strong><output id="wins">6</output></div>
+<div class="result main"><strong data-en="Potential sales / month" data-ar="قيمة المبيعات المحتملة شهريًا">Potential sales / month</strong><output id="sales">SAR 30,000</output></div>
+<div class="result"><strong data-en="Illustrative gross profit / month" data-ar="الربح الإجمالي التقديري شهريًا">Illustrative gross profit / month</strong><output id="profit">SAR 7,500</output></div>
+<div class="result"><strong data-en="Annualized sales scenario" data-ar="سيناريو المبيعات السنوي">Annualized sales scenario</strong><output id="annual">SAR 360,000</output></div>
+<p class="note" data-en="Planning aid only: not a forecast, valuation or evidence of collected revenue. Actual results depend on lead quality, costs, timing and verified completed sales." data-ar="أداة للتخطيط فقط: ليست توقعًا أو تقييمًا أو دليلًا على إيراد محصل. تعتمد النتائج الفعلية على جودة الفرص والتكاليف والتوقيت والمبيعات المكتملة المثبتة.">Planning aid only: not a forecast, valuation or evidence of collected revenue. Actual results depend on lead quality, costs, timing and verified completed sales.</p>
+</section>
+</div>
+<div class="foot"><span data-en="Draft asset · not yet published" data-ar="أصل تجريبي · غير منشور">Draft asset · not yet published</span><span data-en="No external scripts, analytics, storage or data submission." data-ar="لا توجد سكربتات خارجية أو تحليلات أو تخزين أو إرسال للبيانات.">No external scripts, analytics, storage or data submission.</span></div>
 </main>
 </body></html>
