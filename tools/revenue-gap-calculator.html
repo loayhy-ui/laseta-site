@@ -9,12 +9,12 @@
 :root{--ink:#183b34;--muted:#52665f;--green:#0f2f2a;--gold:#c6a45b;--paper:#f5f6f1;--line:#d9e1db;--white:#fff}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}
 main{max-width:900px;margin:auto;padding:24px 16px 44px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--gold);font-size:.8em}
-button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:10px;background:white;color:var(--green);padding:9px 13px;font-weight:700}
+button,.cta{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:10px;background:white;color:var(--green);padding:9px 13px;font-weight:700;text-decoration:none;display:inline-block}
 header{margin:20px 0;background:var(--green);color:white;padding:26px;border-radius:20px}.eyebrow{color:#e4c879;font-size:.82rem;font-weight:800;letter-spacing:.07em}h1{font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin:10px 0}header p{color:#e1e9e5;max-width:720px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px}h2{font-size:1.2rem;margin:0 0 15px}
-label{display:block;font-weight:700;margin:13px 0}input{display:block;width:100%;margin-top:6px;padding:11px;border:1px solid #b8c8bf;border-radius:9px;font:inherit;color:var(--ink)}input:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+label{display:block;font-weight:700;margin:13px 0}input{display:block;width:100%;margin-top:6px;padding:11px;border:1px solid #b8c8bf;border-radius:9px;font:inherit;color:var(--ink)}input:focus,button:focus-visible,.cta:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 output{font-weight:800;color:var(--green)}.result{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0;background:#fbfcf9}.result strong{display:block;font-size:.9rem;color:var(--muted);font-weight:600}.result output{display:block;font-size:1.45rem;margin-top:3px}.result.main{background:#edf3ee;border-color:#c6d5ca}
-.note{font-size:.84rem;color:var(--muted);margin-top:15px}.foot{font-size:.82rem;color:var(--muted);margin-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cta{background:var(--green);color:white;border-color:var(--green);margin-top:6px}.note{font-size:.84rem;color:var(--muted);margin-top:15px}.foot{font-size:.82rem;color:var(--muted);margin-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 [dir=rtl] body{text-align:right}
 @media(max-width:700px){.grid{grid-template-columns:1fr}header{padding:20px}.card{padding:16px}}
 </style>
@@ -46,8 +46,9 @@ output{font-weight:800;color:var(--green)}.result{border:1px solid var(--line);b
 <div class="result"><strong data-en="Illustrative gross profit / month" data-ar="الربح الإجمالي التقديري شهريًا">Illustrative gross profit / month</strong><output id="profit">SAR 7,500</output></div>
 <div class="result"><strong data-en="Annualized sales scenario" data-ar="سيناريو المبيعات السنوي">Annualized sales scenario</strong><output id="annual">SAR 360,000</output></div>
 <p class="note" data-en="Planning aid only: not a forecast, valuation or evidence of collected revenue. Actual results depend on lead quality, costs, timing and verified completed sales." data-ar="أداة للتخطيط فقط: ليست توقعًا أو تقييمًا أو دليلًا على إيراد محصل. تعتمد النتائج الفعلية على جودة الفرص والتكاليف والتوقيت والمبيعات المكتملة المثبتة.">Planning aid only: not a forecast, valuation or evidence of collected revenue. Actual results depend on lead quality, costs, timing and verified completed sales.</p>
+<a id="fitCheckCta" class="cta" href="https://tally.so/r/Me0EPE" rel="noopener noreferrer" data-en="Request a non-binding fit check" data-ar="اطلب مراجعة أولية غير ملزمة">Request a non-binding fit check</a>
 </section>
 </div>
-<div class="foot"><span data-en="Draft asset · not yet published" data-ar="أصل تجريبي · غير منشور">Draft asset · not yet published</span><span data-en="No external scripts, analytics, storage or data submission." data-ar="لا توجد سكربتات خارجية أو تحليلات أو تخزين أو إرسال للبيانات.">No external scripts, analytics, storage or data submission.</span></div>
+<div class="foot"><span data-en="Draft asset · not yet published" data-ar="أصل تجريبي · غير منشور">Draft asset · not yet published</span><span data-en="No external scripts, analytics, storage or data submission." data-ar="لا توجد سكربتات خارجية أو تحليلات أو تخزين أو إرسال للبيانات." >No external scripts, analytics, storage or data submission.</span></div>
 </main>
 </body></html>
